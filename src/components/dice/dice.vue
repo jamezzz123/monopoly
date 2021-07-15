@@ -1,7 +1,7 @@
 <template>
   <!-- <div> -->
   <!-- <h1>Hello</h1> -->
-  <Button @click="moveIt([5, 0])">Roll</Button>
+  <Button @click="moveIt([5, 2])">Roll</Button>
   <canvas
     id="canvas-element"
     class="dice-class"
@@ -15,7 +15,7 @@
 import DiceMovement from "./dice-roll-class";
 import { defineComponent, onMounted, ref } from "vue";
 export default defineComponent({
-  setup(prop, context) {
+  setup() {
     // Think of a way around this
     let diceMovement: any = ref("");
     let element: HTMLCanvasElement | null = null;

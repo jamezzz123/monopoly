@@ -296,7 +296,7 @@ export default class DiceMovement {
     console.log(this.dice.rotate);
     const { diceFaceNumber, rotationPath } = this.randomItem(randomDiceRoll[0]);
     const { diceFaceNumber: diceFaceNumber2, rotationPath: rotationPath2 } =
-      this.randomItem(randomDiceRoll[0]);
+      this.randomItem(randomDiceRoll[1]);
     this.rollDice(rotationPath, this.dice);
     this.rollDice(rotationPath2, this.dice2);
     return [diceFaceNumber + 1, diceFaceNumber2 + 1];
