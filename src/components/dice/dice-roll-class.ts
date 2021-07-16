@@ -1,4 +1,4 @@
-import Zdog, { Anchor as anchor } from "zdog";
+import Zdog, { Anchor as anchor, Illustration as illustrate } from "zdog";
 import anime from "animejs";
 
 const randomInt = (max = 5) => Math.floor(Math.random() * max);
@@ -13,8 +13,8 @@ export default class DiceMovement {
     | { x: number; y?: undefined }
     | { y: number; x?: undefined }
   )[];
-  illustration: any;
-  dice: any;
+  illustration: illustrate;
+  dice: anchor;
   dice2: anchor;
   constructor(canvasElement: HTMLCanvasElement) {
     this.element = canvasElement;
@@ -273,7 +273,7 @@ export default class DiceMovement {
     };
   }
 
-  rollDice({ x = TAU, y = TAU }, dice: anchor) {
+  rollDice({ x = TAU, y = TAU }, dice: anchor): void {
     // animate the object toward the input values;
     anime({
       targets: this.rotation,
@@ -292,7 +292,7 @@ export default class DiceMovement {
       },
     });
   }
-  move(randomDiceRoll: number[] = []) {
+  move(randomDiceRoll: number[] = []): number[] {
     console.log(this.dice.rotate);
     const { diceFaceNumber, rotationPath } = this.randomItem(randomDiceRoll[0]);
     const { diceFaceNumber: diceFaceNumber2, rotationPath: rotationPath2 } =
