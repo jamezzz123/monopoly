@@ -1,21 +1,24 @@
 <template>
-  <!-- <div> -->
-  <!-- <h1>Hello</h1> -->
-  <Button @click="moveIt([5, 2])">Roll</Button>
   <canvas
     id="canvas-element"
     class="dice-class"
-    width="400"
-    height="400"
+    width="500"
+    height="500"
   ></canvas>
-  <!-- </div> -->
+  <!-- :title.sync="pageTitle" -->
 </template>
 
 <script lang="ts">
 import DiceMovement from "./dice-roll-class";
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, onMounted, ref, watch } from "vue";
 export default defineComponent({
-  setup() {
+  props: {
+    rollDice: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  setup(props, ctx) {
     // Think of a way around this
     let diceMovement: any = ref("");
     let element: HTMLCanvasElement | null = null;
@@ -25,9 +28,32 @@ export default defineComponent({
       diceMovement.value = new DiceMovement(element);
     });
 
-    const moveIt = (arr: number[]) => {
-      diceMovement.value.move(arr);
+    const getRandomIntInclusive = (min: number, max: number): number => {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
     };
+
+    // This is a hack to get around the fact that we can't use a ref in a watch
+    // https://github.com/vuejs/vue/issues/7396
+
+    watch(
+      () => props.rollDice,
+      (newValue, oldValue) => {
+        if (newValue === true) {
+          let results = moveIt([
+            getRandomIntInclusive(0, 5),
+            getRandomIntInclusive(0, 5),
+          ]);
+
+          ctx.emit("diceResult", results);
+          ctx.emit("doneRollingDice");
+        }
+      }
+    );
+
+    const moveIt = (arr: number[]) => diceMovement.value.move(arr);
+
     return {
       moveIt,
     };

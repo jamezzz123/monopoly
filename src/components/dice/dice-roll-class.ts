@@ -21,6 +21,7 @@ export default class DiceMovement {
 
     this.illustration = new Illustration({
       element: this.element,
+      zoom: 1.2,
     });
 
     // anchor point used for the rotation
@@ -281,7 +282,7 @@ export default class DiceMovement {
       x: x + TAU * randomInt(),
       y: y + TAU * randomInt(),
       z: TAU * randomInt(),
-      duration: 1500,
+      duration: 1700,
       // while the object is being updated update the rotation of the this.dice
       // ! remember to update the graphic with the updateRenderGraph() method
       update: () => {
@@ -299,6 +300,6 @@ export default class DiceMovement {
       this.randomItem(randomDiceRoll[1]);
     this.rollDice(rotationPath, this.dice);
     this.rollDice(rotationPath2, this.dice2);
-    return [diceFaceNumber + 1, diceFaceNumber2 + 1];
+    return [diceFaceNumber, diceFaceNumber2];
   }
 }
