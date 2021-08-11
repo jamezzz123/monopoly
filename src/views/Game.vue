@@ -1,5 +1,7 @@
 <template>
-  <Board />
+  <Board class="relative inline-block">
+    <PiecePath class="absolute" style="top: 9%; left: 5%" />
+  </Board>
   <Dice
     :rollDice="test"
     @diceResult="logResult($event)"
@@ -11,6 +13,8 @@
 import { defineComponent } from "vue";
 import Board from "@/components/board/board.vue";
 import Dice from "@/components/dice/dice.vue";
+import PiecePath from "@/components/path/piecePath.vue";
+
 export default defineComponent({
   data() {
     return {
@@ -20,6 +24,7 @@ export default defineComponent({
   components: {
     Board,
     Dice,
+    PiecePath,
   },
   methods: {
     logResult(e: number[]) {
