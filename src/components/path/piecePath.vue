@@ -32,6 +32,7 @@
 import { defineComponent } from "vue";
 import { gsap } from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { Player } from "@/model/player";
 gsap.registerPlugin(MotionPathPlugin);
 
 export default defineComponent({
@@ -41,34 +42,45 @@ export default defineComponent({
         {
           id: "gorilla",
           link: require("@/assets/svg/001-gorilla.svg"),
+          location: 1,
+          name: "Jack",
+          bankBalance: 1000,
+          properties: [1, 5, 6, 6, 7, 8],
         },
         {
           id: "owl",
           link: require("@/assets/svg/001-owl.svg"),
+          location: 1,
         },
         {
           id: "panda",
           link: require("@/assets/svg/006-panda.svg"),
+          location: 1,
         },
         {
           id: "cow",
           link: require("@/assets/svg/005-cow.svg"),
+          location: 1,
         },
         {
           id: "bull",
           link: require("@/assets/svg/008-bull.svg"),
+          location: 1,
         },
         {
           id: "rhinoceros",
           link: require("@/assets/svg/007-rhinoceros.svg"),
+          location: 1,
         },
         {
           id: "pig",
           link: require("@/assets/svg/008-pig.svg"),
+          location: 1,
         },
         {
           id: "crocodile",
           link: require("@/assets/svg/010-crocodile.svg"),
+          location: 1,
         },
       ],
     };
@@ -76,7 +88,30 @@ export default defineComponent({
   setup() {
     return {};
   },
+  methods: {
+    moveObject(playerInfo: Player, totalDiceRoll: number) {
+      gsap.to(`#${playerInfo.image}`, {
+        motionPath: {
+          path: "#path",
+          align: "#path",
+          alignOrigin: [0.5, 0.5],
+          // autoRotate: true,
+          start: playerInfo.path.end,
+          end: playerInfo.path.end + 0.025 * totalDiceRoll,
+        },
+        delay: 5,
+        duration: 5,
+        onComplete: () => {
+          // updated the state of the player in vuex
+        },
+      });
+    },
+  },
   mounted() {
+    type Mpath = {
+      start: number;
+      end: number;
+    };
     gsap.to(".pieces", {
       motionPath: {
         path: "#path",
@@ -92,6 +127,10 @@ export default defineComponent({
       transformOrigin: "50% 50%",
       duration: 10,
       ease: "power1.inOut",
+      onComplete: () => {
+        console.log("log");
+        // console.log(gsap.getById("pig"));
+      },
     });
   },
 });

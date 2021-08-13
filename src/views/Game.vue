@@ -1,6 +1,10 @@
 <template>
   <Board class="relative inline-block">
-    <PiecePath class="absolute" style="top: 9%; left: 5%" />
+    <PiecePath
+      class="absolute"
+      ref="piecePathComponent"
+      style="top: 9%; left: 5%"
+    />
   </Board>
   <Dice
     :rollDice="test"
@@ -35,6 +39,24 @@ export default defineComponent({
     setTimeout(() => {
       this.test = true;
     }, 3000);
+
+    setTimeout(() => {
+      let Object = {
+        image: "gorilla",
+        link: require("@/assets/svg/001-gorilla.svg"),
+        location: 1,
+        name: "Jack",
+        bankBalance: 1000,
+        properties: [1, 5, 6, 6, 7, 8],
+        path: {
+          start: 0,
+          end: 0,
+        },
+      };
+      (
+        this.$refs.piecePathComponent as InstanceType<typeof PiecePath>
+      ).moveObject(Object, 12);
+    }, 6000);
   },
   setup() {
     return {};
