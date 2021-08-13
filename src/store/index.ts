@@ -1,10 +1,15 @@
 import { createStore } from "vuex";
+import { Player } from "@/model/player";
 
-export default createStore({
+export interface State {
+  players: Player[];
+}
+
+export default createStore<State>({
   state: {
     players: [
       {
-        id: "gorilla",
+        image: "gorilla",
         link: require("@/assets/svg/001-gorilla.svg"),
         location: 1,
         name: "Jack",
@@ -12,43 +17,67 @@ export default createStore({
         properties: [1, 5, 6, 6, 7, 8],
       },
       {
-        id: "owl",
+        image: "owl",
         link: require("@/assets/svg/001-owl.svg"),
         location: 1,
+        name: "mr jack",
+        bankBalance: 1000,
+        properties: [],
       },
       {
-        id: "panda",
+        image: "panda",
         link: require("@/assets/svg/006-panda.svg"),
         location: 1,
+        name: "mr jacie",
+        bankBalance: 1000,
+        properties: [],
       },
       {
-        id: "cow",
+        image: "cow",
         link: require("@/assets/svg/005-cow.svg"),
         location: 1,
+        name: "mr jackii",
+        bankBalance: 1000,
+        properties: [],
       },
       {
-        id: "bull",
+        image: "bull",
         link: require("@/assets/svg/008-bull.svg"),
         location: 1,
+        name: "mr jackff",
+        bankBalance: 1000,
+        properties: [],
       },
       {
-        id: "rhinoceros",
+        image: "rhinoceros",
         link: require("@/assets/svg/007-rhinoceros.svg"),
         location: 1,
+        name: "mr jackly",
+        bankBalance: 1000,
+        properties: [],
       },
       {
-        id: "pig",
+        image: "pig",
         link: require("@/assets/svg/008-pig.svg"),
         location: 1,
+        name: "mr jackff",
+        bankBalance: 1000,
+        properties: [],
       },
       {
-        id: "crocodile",
+        image: "crocodile",
         link: require("@/assets/svg/010-crocodile.svg"),
         location: 1,
+        name: "mr jack",
+        bankBalance: 1000,
+        properties: [],
       },
     ],
   },
   mutations: {},
   actions: {},
+  getters: {
+    getPlayers: (state) => state.players.splice(0, 3),
+  },
   modules: {},
 });
