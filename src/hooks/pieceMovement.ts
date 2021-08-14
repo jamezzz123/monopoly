@@ -1,14 +1,10 @@
 import { onMounted } from "vue";
-import { useStore } from "vuex";
 import { gsap } from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { Player } from "@/model/player";
 gsap.registerPlugin(MotionPathPlugin);
 
 export default function pieceMovement() {
-  const store = useStore();
-  const players = store.getters.getPlayers;
-
   const moveObject = (
     { image, path = { start: 0, end: 0 } }: Player,
     totalDiceRoll: number
@@ -58,6 +54,6 @@ export default function pieceMovement() {
   });
   return {
     moveObject,
-    players,
+    // players,
   };
 }

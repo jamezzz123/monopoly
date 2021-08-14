@@ -78,6 +78,12 @@ export default createStore<State>({
   actions: {},
   getters: {
     getPlayers: (state) => state.players.splice(0, 3),
+    // getTodoById: (state) => (id) => {
+    //   return state.players.find(todo => todo.id === id)
+    // },
+    getPlayerByTurn: (state) => (index: number) => {
+      return state.players[index];
+    },
   },
   modules: {},
 });

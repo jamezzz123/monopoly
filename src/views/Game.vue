@@ -6,20 +6,18 @@
       ref="piecePathComponent"
       style="top: 9%; left: 5%"
     />
+    <Dice />
   </Board>
-  <Dice
-    :rollDice="test"
-    @diceResult="logResult($event)"
-    @doneRollingDice="test = false"
-  />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import { useStore } from "vuex";
 import Board from "@/components/board/board.vue";
 import Dice from "@/components/dice/dice.vue";
 import PiecePath from "@/components/path/piecePath.vue";
 import useMovement from "@/hooks/pieceMovement";
+import useDiceRoll from "@/hooks/diceRoll";
 
 export default defineComponent({
   data() {
@@ -29,25 +27,39 @@ export default defineComponent({
   },
   setup() {
     // const store = useStore();
-    let { moveObject, players } = useMovement();
+    const store = useStore();
+    const players = store.getters.getPlayers;
+    let { rotateDice } = useDiceRoll();
+    let { moveObject } = useMovement();
+    let GameStart = ref(false);
+    let playerTurn = 0;
+    let diceSum = (e: number[]): number =>
+      e.reduce((acc, current) => acc + current);
+
     setTimeout(async () => {
-      let moves = moveObject(
-        {
-          image: "gorilla",
-          link: require("@/assets/svg/001-gorilla.svg"),
-          location: 1,
-          name: "Jack",
-          bankBalance: 1000,
-          properties: [1, 5, 6, 6, 7, 8],
-          path: {
-            start: 0,
-            end: 0,
+      GameStart.value = true;
+      while (GameStart.value) {
+        // console.log(players);
+        let diceRollCount = diceSum(await rotateDice());
+        // console.log(getPlayerByTurn(0));
+        let moves = await moveObject(
+          {
+            image: "gorilla",
+            link: require("@/assets/svg/001-gorilla.svg"),
+            location: 1,
+            name: "Jack",
+            bankBalance: 1000,
+            properties: [1, 5, 6, 6, 7, 8],
           },
-        },
-        30
-      );
-      console.log(moves);
-    }, 20000);
+          diceRollCount
+        );
+        console.log(moves);
+        playerTurn++;
+        if (playerTurn >= players.length) {
+          playerTurn = 0;
+        }
+      }
+    }, 10000);
 
     return {
       players,
@@ -58,11 +70,7 @@ export default defineComponent({
     Dice,
     PiecePath,
   },
-  methods: {
-    logResult(e: number[]) {
-      console.log(e);
-    },
-  },
+  methods: {},
 });
 </script>
 
