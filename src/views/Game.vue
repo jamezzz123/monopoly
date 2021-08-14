@@ -4,9 +4,9 @@
       :players="players"
       class="absolute"
       ref="piecePathComponent"
-      style="top: 9%; left: 5%"
+      style="top: 6%; left: 5%"
     />
-    <Dice />
+    <Dice class="absolute" style="top: 30%; left: 23%" />
   </Board>
 </template>
 
