@@ -274,32 +274,37 @@ export default class DiceMovement {
     };
   }
 
-  rollDice({ x = TAU, y = TAU }, dice: anchor): void {
-    // animate the object toward the input values;
-    anime({
-      targets: this.rotation,
-      // ! increment the input rotation with a random number of additional rotations
-      x: x + TAU * randomInt(),
-      y: y + TAU * randomInt(),
-      z: TAU * randomInt(),
-      duration: 1700,
-      // while the object is being updated update the rotation of the this.dice
-      // ! remember to update the graphic with the updateRenderGraph() method
-      update: () => {
-        dice.rotate.x = this.rotation.x;
-        dice.rotate.y = this.rotation.y;
-        dice.rotate.z = this.rotation.z;
-        this.illustration.updateRenderGraph();
-      },
+  rollDice({ x = TAU, y = TAU }, dice: anchor) {
+    return new Promise((resolve, reject) => {
+      anime({
+        targets: this.rotation,
+        // ! increment the input rotation with a random number of additional rotations
+        x: x + TAU * randomInt(),
+        y: y + TAU * randomInt(),
+        z: TAU * randomInt(),
+        duration: 1700,
+        // while the object is being updated update the rotation of the this.dice
+        // ! remember to update the graphic with the updateRenderGraph() method
+        update: () => {
+          dice.rotate.x = this.rotation.x;
+          dice.rotate.y = this.rotation.y;
+          dice.rotate.z = this.rotation.z;
+          this.illustration.updateRenderGraph();
+        },
+        complete: () => {
+          resolve("Done");
+        },
+      });
     });
+    // animate the object toward the input values;
   }
-  move(randomDiceRoll: number[] = []): number[] {
+  async move(randomDiceRoll: number[] = []): Promise<number[]> {
     console.log(this.dice.rotate);
     const { diceFaceNumber, rotationPath } = this.randomItem(randomDiceRoll[0]);
     const { diceFaceNumber: diceFaceNumber2, rotationPath: rotationPath2 } =
       this.randomItem(randomDiceRoll[1]);
-    this.rollDice(rotationPath, this.dice);
-    this.rollDice(rotationPath2, this.dice2);
+    await this.rollDice(rotationPath, this.dice);
+    await this.rollDice(rotationPath2, this.dice2);
     return [diceFaceNumber, diceFaceNumber2];
   }
 }
