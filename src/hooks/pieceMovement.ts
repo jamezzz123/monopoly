@@ -5,27 +5,37 @@ import { Player } from "@/model/player";
 gsap.registerPlugin(MotionPathPlugin);
 
 export default function pieceMovement() {
+  type moves = {
+    start: number;
+    end: number;
+  };
+
   const moveObject = (
     { image, path = { start: 0, end: 0 } }: Player,
     totalDiceRoll: number
   ) => {
+    console.log(path.end);
     return new Promise((resolve, reject) => {
-      gsap.to(`#${image}`, {
+      const tween = gsap.to(`#${image}`, {
         motionPath: {
           path: "#path",
           align: "#path",
           alignOrigin: [0.5, 0.5],
           // autoRotate: true,
-          start: path.end,
-          end: path.end + 0.025 * totalDiceRoll,
+          start: path.start,
+          end: path.start + 0.025 * totalDiceRoll,
         },
-        delay: 5,
-        duration: 5,
-        onComplete: () => {
-          // updated the state of the player in vuex
-          resolve("Done");
-        },
+        delay: 0,
+        duration: 2,
+        // onComplete: () => {
+        //   // updated the state of the player in vuex
+        //   resolve("Done");
+        // },
       });
+
+      tween.vars.onComplete = () => {
+        resolve(tween.vars.motionPath as moves);
+      };
     });
   };
 
