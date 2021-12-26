@@ -14,7 +14,6 @@ const routes: Array<RouteRecordRaw> = [
     // component: Home,
     component: Games,
   },
-
   {
     path: "/about",
     name: "About",
