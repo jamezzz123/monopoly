@@ -1,4 +1,4 @@
-type path = {
+export type path = {
   start: number;
   end: number;
 };

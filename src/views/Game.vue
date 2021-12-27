@@ -7,12 +7,16 @@
       style="top: 6%; left: 5%"
     />
     <Dice class="absolute" style="top: 30%; left: 23%" />
+    <h1>
+      <pre>{{ playerss }}</pre>
+    </h1>
   </Board>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, reactive } from "vue";
 // import { useStore } from "vuex";
+import { usePlayerStore } from "@/store/player";
 import Board from "@/components/board/board.vue";
 import Dice from "@/components/dice/dice.vue";
 import PiecePath from "@/components/path/piecePath.vue";
@@ -27,52 +31,42 @@ export default defineComponent({
     };
   },
   setup() {
-    let players = reactive([
-      {
-        image: "gorilla",
-        link: require("@/assets/svg/001-gorilla.svg"),
-        location: 1,
-        name: "Jack",
-        bankBalance: 1000,
-        properties: [1, 5, 6, 6, 7, 8],
-      },
-      {
-        image: "owl",
-        link: require("@/assets/svg/001-owl.svg"),
-        location: 1,
-        name: "mr jack",
-        bankBalance: 1000,
-        properties: [],
-      },
-      {
-        image: "panda",
-        link: require("@/assets/svg/006-panda.svg"),
-        location: 1,
-        name: "mr jacie",
-        bankBalance: 1000,
-        properties: [],
-      },
-      {
-        image: "cow",
-        link: require("@/assets/svg/005-cow.svg"),
-        location: 1,
-        name: "mr jackii",
-        bankBalance: 1000,
-        properties: [],
-      },
-    ]) as Player[];
+    const Players = usePlayerStore();
+    Players.addPlayer({
+      image: "gorilla",
+      link: require("@/assets/svg/001-gorilla.svg"),
+      location: 1,
+      name: "Jack",
+      bankBalance: 1000,
+      properties: [1, 5, 6, 6, 7, 8],
+    });
+    Players.addPlayer({
+      image: "owl",
+      link: require("@/assets/svg/001-owl.svg"),
+      location: 1,
+      name: "mr jack",
+      bankBalance: 1000,
+      properties: [],
+    });
+
+    Players.addPlayer({
+      image: "panda",
+      link: require("@/assets/svg/006-panda.svg"),
+      location: 1,
+      name: "mr jacie",
+      bankBalance: 1000,
+      properties: [],
+    });
+
     let { rotateDice } = useDiceRoll();
     let { moveObject } = useMovement();
     let GameStart = ref(false);
-    let playerTurn = 0;
     let diceSum = (e: number[]): number =>
       e.reduce((acc, current) => acc + current);
 
-    let updatePlayerPosition = (imageID: string, endMove: number) => {
-      let index = players.findIndex((player) => player.image === imageID);
+    let updatePlayerPosition = (endMove: number) => {
       let path = { start: endMove, end: 0 };
-      players[index].path = path;
-      // console.log(players);
+      Players.updateCurrentPlayer(path);
     };
     type moves = {
       start: number;
@@ -82,18 +76,12 @@ export default defineComponent({
       GameStart.value = true;
       while (GameStart.value) {
         let diceRollCount = diceSum(await rotateDice());
-        console.log(players[playerTurn]);
-        console.log(players);
         let moves = (await moveObject(
-          players[playerTurn],
+          Players.getCurrentPlayer,
           diceRollCount
         )) as moves;
-        updatePlayerPosition(players[playerTurn].image, moves.end);
-        // console.log(moves);
-        playerTurn++;
-        if (playerTurn >= players.length) {
-          playerTurn = 0;
-        }
+        updatePlayerPosition(moves.end);
+        Players.updatePlayerTurn();
       }
     };
 
@@ -102,7 +90,7 @@ export default defineComponent({
     });
 
     return {
-      players,
+      players: Players.players,
     };
   },
   components: {
@@ -110,7 +98,6 @@ export default defineComponent({
     Dice,
     PiecePath,
   },
-  methods: {},
 });
 </script>
 
