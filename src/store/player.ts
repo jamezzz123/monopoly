@@ -37,5 +37,8 @@ export const usePlayerStore = defineStore("player", {
     getCurrentPlayer: (state) => {
       return state.players[state.playerTurn];
     },
+    getPlayerTurn: (state) => {
+      return state.playerTurn;
+    },
   },
 });

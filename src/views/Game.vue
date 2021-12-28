@@ -1,16 +1,27 @@
 <template>
-  <Board class="relative inline-block">
-    <PiecePath
-      :players="players"
-      class="absolute"
-      ref="piecePathComponent"
-      style="top: 6%; left: 5%"
-    />
-    <Dice class="absolute" style="top: 30%; left: 23%" />
-    <h1>
-      <pre>{{ playerss }}</pre>
-    </h1>
-  </Board>
+  <div class="flex">
+    <Board class="relative inline-block">
+      <PiecePath
+        :players="players"
+        class="absolute"
+        ref="piecePathComponent"
+        style="top: 6%; left: 5%"
+      />
+      <Dice class="absolute" style="top: 30%; left: 23%" />
+    </Board>
+    <div class="flex-1">
+      <div class="py-2 px-3">
+        <PlayerCard
+          v-for="(player, index) in players"
+          :key="index"
+          :name="player.name"
+          :amount="player.bankBalance"
+          :image="player.link"
+          :active="index === Players.getPlayerTurn"
+        ></PlayerCard>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -20,6 +31,7 @@ import { usePlayerStore } from "@/store/player";
 import Board from "@/components/board/board.vue";
 import Dice from "@/components/dice/dice.vue";
 import PiecePath from "@/components/path/piecePath.vue";
+import PlayerCard from "@/components/PlayerCard.vue";
 import useMovement from "@/hooks/pieceMovement";
 import useDiceRoll from "@/hooks/diceRoll";
 import { Player } from "@/model/player";
@@ -91,12 +103,15 @@ export default defineComponent({
 
     return {
       players: Players.players,
+      turn: Players.getPlayerTurn,
+      Players,
     };
   },
   components: {
     Board,
     Dice,
     PiecePath,
+    PlayerCard,
   },
 });
 </script>
