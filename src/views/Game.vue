@@ -21,6 +21,7 @@
         ></PlayerCard>
       </div>
     </div>
+    <my-modal />
   </div>
 </template>
 
@@ -35,6 +36,7 @@ import PlayerCard from "@/components/PlayerCard.vue";
 import useMovement from "@/hooks/pieceMovement";
 import useDiceRoll from "@/hooks/diceRoll";
 import { Player } from "@/model/player";
+import MyModal from "@/components/MyModal.vue";
 
 export default defineComponent({
   data() {
@@ -112,6 +114,7 @@ export default defineComponent({
     Dice,
     PiecePath,
     PlayerCard,
+    MyModal,
   },
 });
 </script>
