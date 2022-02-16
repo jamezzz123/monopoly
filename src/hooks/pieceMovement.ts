@@ -41,7 +41,7 @@ export default function pieceMovement() {
 
   onMounted(() => {
     console.log("mounted");
-    gsap.to(".pieces", {
+    gsap.set(".pieces", {
       motionPath: {
         path: "#path",
         align: "#path",
