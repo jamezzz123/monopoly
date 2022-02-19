@@ -10,14 +10,17 @@
           :style="{ backgroundColor: state.property.color }"
           class="bg-yellow-300 border-b-2 border-black p-3 text-center"
         >
-          <p class="antialiased roboto-font font-medium text-lg">
-            Lorem ipsum dolor
-          </p>
           <h2
-            class="font-large antialiased text-xl font-bold text-black mt-0 roboto-font"
+            class="font-large capitalize antialiased text-xl font-bold text-black mt-0 roboto-font"
           >
             {{ state.property.label }}
           </h2>
+          <p class="antialiased roboto-font font-medium text-lg">
+            Cost:
+            <span class="font-medium oswald-font font-bold capitalize">
+              {{ state.property.price }}</span
+            >
+          </p>
         </div>
         <div class="bg-white p-3 text-center">
           <div
