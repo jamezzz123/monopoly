@@ -125,9 +125,9 @@ export default defineComponent({
           playerBoardPosition
         ) as board;
         // console.log(place.value);
-        alert(JSON.stringify(property.details));
+        // alert(JSON.stringify(property.details));
         let result = await place.value?.show(property.details);
-        alert(result);
+        // alert(result);
         // showModal.value = true;
         // find the the board object where that border position
         // equals Answer
