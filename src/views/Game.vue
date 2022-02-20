@@ -22,7 +22,7 @@
       </div>
     </div>
     <transition name="modal">
-      <my-modal ref="place" />
+      <PropertyModal ref="property" />
     </transition>
   </div>
 </template>
@@ -38,7 +38,7 @@ import PlayerCard from "@/components/PlayerCard.vue";
 import useMovement from "@/hooks/pieceMovement";
 import useDiceRoll from "@/hooks/diceRoll";
 import { Player } from "@/model/player";
-import MyModal from "@/components/MyModal.vue";
+import PropertyModal from "@/components/PropertyModal.vue";
 import { getPlayerBoardPosition } from "@/utils/index";
 
 type board = {
@@ -58,8 +58,7 @@ export default defineComponent({
     };
   },
   setup() {
-    let place = ref<null | { show: (agr: any) => null }>(null);
-    let property = reactive({ details: {} as board });
+    let property = ref<null | { show: (agr: any) => null }>(null);
 
     const Players = usePlayerStore();
     const board = useBoard();
@@ -121,12 +120,12 @@ export default defineComponent({
         // Number.parseInt(moves.end / 0.025);
         let playerBoardPosition = getPlayerBoardPosition(moves.end);
         // find the the board object where that border position
-        property.details = getBoardPositionDetails(
+        let propertyDetails = getBoardPositionDetails(
           playerBoardPosition
         ) as board;
         // console.log(place.value);
         // alert(JSON.stringify(property.details));
-        let result = await place.value?.show(property.details);
+        let result = await property.value?.show(propertyDetails);
         // alert(result);
         // showModal.value = true;
         // find the the board object where that border position
@@ -151,7 +150,6 @@ export default defineComponent({
       turn: Players.getPlayerTurn,
       Players,
       property,
-      place,
     };
   },
   components: {
@@ -159,7 +157,7 @@ export default defineComponent({
     Dice,
     PiecePath,
     PlayerCard,
-    MyModal,
+    PropertyModal,
   },
 });
 </script>
