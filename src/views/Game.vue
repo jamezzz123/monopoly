@@ -38,18 +38,10 @@ import PlayerCard from "@/components/PlayerCard.vue";
 import useMovement from "@/hooks/pieceMovement";
 import useDiceRoll from "@/hooks/diceRoll";
 import { Player } from "@/model/player";
+import { board, board_property } from "@/model/board";
 import PropertyModal from "@/components/PropertyModal.vue";
 import { getPlayerBoardPosition } from "@/utils/index";
-
-type board = {
-  label: string;
-  price: string;
-  icon: string;
-  color: string;
-  order: string;
-  pos: string;
-  board_position: number;
-};
+import { useBilling } from "@/hooks/billing";
 
 export default defineComponent({
   data() {
@@ -60,6 +52,7 @@ export default defineComponent({
   setup() {
     let property = ref<null | { show: (agr: any) => null }>(null);
 
+    const billing = useBilling();
     const Players = usePlayerStore();
     const board = useBoard();
 
@@ -103,7 +96,9 @@ export default defineComponent({
       start: number;
       end: number;
     };
-    function getBoardPositionDetails(playerPosition: number) {
+    function getBoardPositionDetails(
+      playerPosition: number
+    ): board_property | undefined {
       return board.board.List.find(
         (item) => item.board_position === playerPosition
       );
@@ -120,17 +115,15 @@ export default defineComponent({
         // Number.parseInt(moves.end / 0.025);
         let playerBoardPosition = getPlayerBoardPosition(moves.end);
         // find the the board object where that border position
-        let propertyDetails = getBoardPositionDetails(
-          playerBoardPosition
-        ) as board;
+        let propertyDetails = getBoardPositionDetails(playerBoardPosition);
         // console.log(place.value);
         // alert(JSON.stringify(property.details));
         let result = await property.value?.show(propertyDetails);
-        // alert(result);
-        // showModal.value = true;
-        // find the the board object where that border position
-        // equals Answer
-        // get the board detail pass to the modal then show modal
+        console.log(result);
+        console.log(propertyDetails);
+        if (result && propertyDetails) {
+          billing.buyProperty(propertyDetails.id);
+        }
 
         updatePlayerPosition(moves.end);
         Players.updatePlayerTurn();

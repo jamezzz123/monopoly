@@ -1,211 +1,540 @@
 {
   "List": [
     {
+      "id": 1,
       "label": "strand",
-      "price": "£220",
+      "price": 220,
       "icon": "",
       "color": "red",
       "order": "2",
       "pos": "top",
-      "board_position":21
+      "board_position": 21,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#d05858",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0,
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [1, 3],
+      "owner": null
     },
     {
+      "id": 2,
+      "property": false,
+      "utility": false,
+      "property_color": "white",
       "label": "chance",
       "price": "",
       "icon": "❓",
       "color": "none",
       "order": "3",
       "pos": "top",
-      "board_position":22
+      "board_position": 22
     },
     {
+      "id": 3,
       "label": "fleet street",
-      "price": "£220",
+      "price": 220,
       "icon": "",
       "color": "red",
       "order": "4",
       "pos": "top",
-      "board_position":22
+      "board_position": 23,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#d05858",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0,
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [1, 3],
+      "owner": null
     },
     {
+      "id": 4,
       "label": "trafalgar square",
-      "price": "£240",
+      "price": 240,
       "icon": "",
       "color": "none",
       "order": "5",
       "pos": "top",
-      "board_position":23
+      "board_position": 24,
+
+      "property_color": "white",
+      "property": false,
+      "utility": true,
+      "owner": null,
+      "rent": 100
     },
     {
+      "id": 5,
       "label": "fenchurch st. station",
-      "price": "£200",
+      "price": 200,
       "icon": "🚂",
       "color": "none",
       "order": "6",
       "pos": "top",
-      "board_position":24
+      "board_position": 25,
+
+      "property_color": "white",
+      "property": false,
+      "utility": true,
+      "owner": null,
+      "rent": 100
     },
     {
+      "id": 6,
       "label": "leicester square",
-      "price": "£260",
+      "price": 260,
       "icon": "",
       "color": "yellow",
       "order": "7",
       "pos": "top",
-      "board_position":25
+      "board_position": 26,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#e9c33d",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0,
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [6,7,9],
+      "owner": null
+
+
     },
     {
+      "id": 7,
       "label": "ceventry street",
-      "price": "£200",
+      "price": 200,
       "icon": "",
       "color": "yellow",
       "order": "8",
       "pos": "top",
-      "board_position":26
+      "board_position": 27,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#e9c33d",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0,
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [6,7,9],
+      "owner": null
     },
     {
+      "id": 8,
       "label": "water<br>works",
-      "price": "£150",
+      "price": 150,
       "icon": "🚰",
       "color": "none",
       "order": "9",
       "pos": "top",
-      "board_position":27
+      "board_position": 28,
+
+      "property_color": "white",
+      "property": false,
+      "utility": true,
+      "owner": null,
+      "rent": 100
     },
     {
+      "id": 9,
       "label": "piccadilly",
-      "price": "£280",
+      "price": 280,
       "icon": "",
       "color": "yellow",
       "order": "10",
       "pos": "top",
-      "board_position":28
+      "board_position": 29,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#e9c33d",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0,
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [6,7,9],
+      "owner": null
     },
     {
+      "id": 10,
       "label": "vine street",
-      "price": "£200",
+      "price": 200,
       "icon": "",
       "color": "orange",
       "order": "12",
       "pos": "left",
-      "board_position":19
+      "board_position": 19,
+
+
+      "property": true,
+      "utility": false,
+      "property_color": "#eda13d",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [10,11,13],
+      "owner": null
     },
     {
+      "id": 11,
       "label": "marlborog'h street",
-      "price": "£200",
+      "price": 200,
       "icon": "",
       "color": "orange",
       "order": "15",
       "pos": "left",
-      "board_position":18
+      "board_position": 18,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#eda13d",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [10,11,13],
+      "owner": null
     },
     {
+      "id": 12,
       "label": "community chest",
       "price": "",
       "icon": "💰",
       "color": "none",
       "order": "17",
       "pos": "left",
-      "board_position":17
+      "board_position": 17,
+
+      "property_color": "white",
+      "property": false,
+      "utility": false,
+      "owner": null,
+      "rent": 100
     },
     {
+      "id": 13,
       "label": "bow street",
-      "price": "£180",
+      "price": 180,
       "icon": "",
       "color": "orange",
       "order": "19",
       "pos": "left",
-      "board_position":16
+      "board_position": 16,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#eda13d",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [10,11,13],
+      "owner": null
     },
     {
+      "id": 14,
       "label": "marylebone station",
-      "price": "£200",
+      "price": 200,
       "icon": "🚂",
       "color": "none",
       "order": "21",
       "pos": "left",
-      "board_position":15
+      "board_position": 15,
+
+      "property_color": "white",
+      "property": false,
+      "utility": true,
+      "owner": null,
+      "rent": 100
     },
     {
+      "id": 15,
       "label": "northumrl'd avenue",
-      "price": "£160",
+      "price": 160,
       "icon": "",
       "color": "pink",
       "order": "23",
       "pos": "left",
-      "board_position":14
+      "board_position": 14,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#f89aa9",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [15,16,18],
+      "owner": null
     },
     {
+      "id": 16,
       "label": "whitehall",
-      "price": "£140",
+      "price": 140,
       "icon": "",
       "color": "pink",
       "order": "25",
       "pos": "left",
-      "board_position":13
+      "board_position": 13,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#f89aa9",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [15,16,18],
+      "owner": null
     },
     {
+      "id": 17,
       "label": "electric company",
-      "price": "£150",
+      "price": 150,
       "icon": "💡",
       "color": "none",
       "order": " 27",
       "pos": "left",
-      "board_position":12
+      "board_position": 12,
+
+      "property_color": "white",
+      "property": false,
+      "utility": true,
+      "owner": null,
+      "rent": 100
+
     },
     {
+      "id": 18,
       "label": "pall mall",
-      "price": "£140",
+      "price": 140,
       "icon": "",
       "color": "pink",
       "order": "29",
       "pos": "left",
-      "board_position":11
+      "board_position": 11,
+      "property": true,
+      "utility": false,
+      "property_color": "#f89aa9",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [15,16,18],
+      "owner": null
     },
     {
+      "id": 19,
       "label": "regent street",
-      "price": "£300",
+      "price": 300,
       "icon": "",
       "color": "green",
       "order": "14",
       "pos": "right",
-      "board_position":31
+      "board_position": 31,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#f89aa9",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [19,20,22],
+      "owner": null
     },
     {
+      "id": 20,
       "label": "oxford street",
-      "price": "£300",
+      "price": 300,
       "icon": "",
       "color": "green",
       "order": "16",
       "pos": "right",
-      "board_position":33
+      "board_position": 33,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#f89aa9",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [19,20,22],
+      "owner": null
     },
     {
+      "id": 21,
       "label": "community chest",
       "price": "",
       "icon": "💰",
       "color": "none",
       "order": "18",
       "pos": "right",
-      "board_position":33
+      "board_position": 33,
+
+      "property_color": "white",
+      "property": false,
+      "utility": false,
+      "owner": null
+
     },
     {
+      "id": 22,
       "label": "bond street",
-      "price": "£320",
+      "price": 320,
       "icon": "",
       "color": "green",
       "order": "20",
       "pos": "right",
-      "board_position":34
+      "board_position": 34,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#f89aa9",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [19,20,22],
+      "owner": null
     },
     {
+      "id":23,
       "label": "liverpool st. station",
-      "price": "£320",
+      "price": 320,
       "icon": "🚂",
       "color": "none",
       "order": "22",
       "pos": "right",
-      "board_position":35
+      "board_position": 35,
+
+      "property_color": "white",
+      "property": false,
+      "utility": true,
+      "owner": null,
+      "rent": 100
     },
     {
       "label": "chance",
@@ -214,115 +543,290 @@
       "color": "none",
       "order": "24",
       "pos": "right",
-      "board_position":36
+      "board_position": 36,
+
+      "property_color": "white",
+      "property": false,
+      "utility": false,
+      "owner": null,
+      "rent": 100
     },
     {
+      "id": 24,
       "label": "park lane",
-      "price": "£350",
+      "price": 350,
       "icon": "",
       "color": "blue",
       "order": "26",
       "pos": "right",
-      "board_position":37
+      "board_position": 37,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#4b5c99",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [24,26],
+      "owner": null
     },
     {
+      "id": 25,
       "label": "super<br />tax",
-      "price": "£100",
+      "price": 100,
       "icon": "💍",
       "color": "none",
       "order": "28",
       "pos": "right",
-      "board_position":38
+      "board_position": 38,
+
+      "property_color": "white",
+      "property": false,
+      "utility": true,
+      "owner": null,
+      "rent": 100
+      
     },
     {
+      "id": 26,
       "label": "mayfair",
-      "price": "£400",
+      "price": 400,
       "icon": "",
       "color": "blue",
       "order": "30",
       "pos": "right",
-      "board_position":39
+      "board_position": 39,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#4b5c99",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [24,26],
+      "owner": null
     },
     {
+      "id": 27,
       "label": "pentonville road",
-      "price": "£120",
+      "price": 120,
       "icon": "",
       "color": "sky",
       "order": "32",
       "pos": "bottom",
-      "board_position":9
+      "board_position": 9,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#46bfff",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [27,28,30],
+      "owner": null
     },
     {
+      "id": 28,
       "label": "euston road",
-      "price": "£100",
+      "price": 100,
       "icon": "",
       "color": "sky",
       "order": "33",
       "pos": "bottom",
-      "board_position":8
+      "board_position": 8,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#46bfff",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [27,28,30],
+      "owner": null
     },
     {
+      "id": 29,
       "label": "chance",
       "price": "",
       "icon": "❓",
       "color": "none",
       "order": "34",
       "pos": "bottom",
-      "board_position":7
+      "board_position": 7,
+
+      "property_color": "white",
+      "property": false,
+      "utility": false,
+      "owner": null,
+      "rent": 100
     },
     {
+      "id": 30,
       "label": "the angel, islington",
-      "price": "£100",
+      "price": 100,
       "icon": "",
       "color": "sky",
       "order": "35",
       "pos": "bottom",
-      "board_position":6
+      "board_position": 6,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#46bfff",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [27,28,30],
+      "owner": null
     },
     {
+      "id": 31,
       "label": "kings cross station",
-      "price": "£200",
+      "price": 200,
       "icon": "🚂",
       "color": "none",
       "order": "36",
       "pos": "bottom",
-      "board_position":5
+      "board_position": 5,
+
+      "property_color": "white",
+      "property": false,
+      "utility": true,
+      "owner": null,
+      "rent": 100
     },
     {
+      "id": 32,
       "label": "income<br />tax",
-      "price": "£200",
+      "price": 200,
       "icon": "🔸",
       "color": "none",
       "order": "37",
       "pos": "bottom",
-      "board_position":4
+      "board_position": 4,
+
+      "property_color": "white",
+      "property": false,
+      "utility": false,
+      "owner": null,
+      "rent": 100
     },
     {
+      "id": 33,
       "label": "whitechapel road",
-      "price": "£60",
+      "price": 60,
       "icon": "",
       "color": "brown",
       "order": "38",
       "pos": "bottom",
-      "board_position":3
+      "board_position": 3,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#894c4b",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [33,35],
+      "owner": null
     },
     {
+      "id": 34,
       "label": "community chest",
       "price": "",
       "icon": "💰",
       "color": "none",
       "order": "39",
       "pos": "bottom",
-      "board_position":2
+      "board_position": 2,
+
+      "property_color": "white",
+      "property": false,
+      "utility": false,
+      "owner": null,
+      "rent": 100
     },
     {
+      "id": 35,
       "label": "old kent road",
-      "price": "£60",
+      "price": 60,
       "icon": "",
       "color": "brown",
       "order": "40",
       "pos": "bottom",
-      "board_position":1
+      "board_position": 1,
+
+      "property": true,
+      "utility": false,
+      "property_color": "#894c4b",
+      "rent": {
+        "rent": 20,
+        "rentWC": 100,
+        "rentH1": 200,
+        "rentH2": 300,
+        "rentH3": 400,
+        "rentH4": 500
+      },
+      "house_cost": 600,
+      "house_count": 0, 
+      "hotel_cost": 1500,
+      "hotel_count": 0,
+      "property_group": [33,35],
+      "owner": null
     }
   ]
 }

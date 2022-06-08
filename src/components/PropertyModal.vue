@@ -7,7 +7,7 @@
     <div class="bg-white w-1/4 my-4 p-4 rounded">
       <div class="border-2 border-black">
         <div
-          :style="{ backgroundColor: state.property.color }"
+          :style="{ backgroundColor: state.property.property_color }"
           class="bg-yellow-300 border-b-2 border-black p-3 text-center"
         >
           <h2
@@ -124,7 +124,6 @@ export default {
     async function show(property) {
       state.showModal = true;
       state.property = property;
-      console.trace(ok.value);
 
       return new Promise((resolve, reject) => {
         ok.value.addEventListener("click", () => {
