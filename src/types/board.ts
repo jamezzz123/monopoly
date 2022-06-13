@@ -1,6 +1,13 @@
 export interface board {
   List: board_property[];
 }
+
+type playerOwner = {
+  id: string;
+  name: string;
+  dominateColor: string;
+};
+
 export interface board_property {
   id: number;
   label: string;
@@ -27,5 +34,5 @@ export interface board_property {
   hotel_cost: number;
   hotel_count: number;
   property_group: number[];
-  owner: null | string | number;
+  owner: null | playerOwner;
 }

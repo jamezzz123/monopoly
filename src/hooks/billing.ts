@@ -18,7 +18,11 @@ export function useBilling() {
       if (currentPlayer.bankBalance >= currentBoardProperty.price) {
         currentPlayer.bankBalance -= Number(currentBoardProperty.price);
         currentPlayer.properties.push(currentBoardProperty.id);
-        currentBoardProperty.owner = currentPlayer.name;
+        currentBoardProperty.owner = {
+          id: currentPlayer.id,
+          name: currentPlayer.name,
+          dominateColor: currentPlayer.dominateColor,
+        };
       }
     }
   }

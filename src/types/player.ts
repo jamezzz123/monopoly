@@ -3,6 +3,7 @@ export type path = {
   end: number;
 };
 export interface Player {
+  id: string;
   image: string;
   link: string;
   location: number;
@@ -10,4 +11,5 @@ export interface Player {
   bankBalance: number;
   properties: number[];
   path?: path;
+  dominateColor: string;
 }

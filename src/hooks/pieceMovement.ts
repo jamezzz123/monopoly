@@ -1,7 +1,7 @@
 import { onMounted } from "vue";
 import { gsap } from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import { Player } from "@/model/player";
+import { Player } from "@/types/player";
 gsap.registerPlugin(MotionPathPlugin);
 
 export default function pieceMovement() {

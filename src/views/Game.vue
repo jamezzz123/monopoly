@@ -37,12 +37,15 @@ import PiecePath from "@/components/path/piecePath.vue";
 import PlayerCard from "@/components/PlayerCard.vue";
 import useMovement from "@/hooks/pieceMovement";
 import useDiceRoll from "@/hooks/diceRoll";
-import { Player } from "@/model/player";
-import { board, board_property } from "@/model/board";
+import { Player } from "@/types/player";
+import { board, board_property } from "@/types/board";
 import PropertyModal from "@/components/PropertyModal.vue";
 import { getPlayerBoardPosition } from "@/utils/index";
 import { useBilling } from "@/hooks/billing";
+import ColorThief from "colorthief";
 
+const colorThief = new ColorThief();
+console.log(colorThief);
 export default defineComponent({
   data() {
     return {
@@ -57,30 +60,49 @@ export default defineComponent({
     const board = useBoard();
 
     Players.addPlayer({
+      id: "go",
       image: "gorilla",
       link: require("@/assets/svg/001-gorilla.svg"),
       location: 1,
       name: "Jack",
       bankBalance: 1000,
       properties: [1, 5, 6, 6, 7, 8],
+      dominateColor: "red",
     });
     Players.addPlayer({
+      id: "ow",
       image: "owl",
       link: require("@/assets/svg/001-owl.svg"),
       location: 1,
       name: "mr jack",
       bankBalance: 1000,
       properties: [],
+      dominateColor: "blue",
     });
 
     Players.addPlayer({
+      id: "pa",
       image: "panda",
       link: require("@/assets/svg/006-panda.svg"),
       location: 1,
       name: "mr jacie",
       bankBalance: 1000,
       properties: [],
+      dominateColor: "green",
     });
+
+    setTimeout(() => {
+      Players.players.forEach((element) => {
+        // console.log(element);
+        let img = document.getElementById(element.image) as HTMLImageElement;
+        console.log(img);
+        if (img) {
+          let color = colorThief.getColor(img);
+          console.log(`rgb(${color.join(",")})`);
+          element.dominateColor = `rgb(${color.join(",")})`;
+        }
+      });
+    }, 3000);
 
     let { rotateDice } = useDiceRoll();
     let { moveObject } = useMovement();

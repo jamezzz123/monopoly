@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { Player } from "@/model/player";
+import { Player } from "@/types/player";
 
 export type RootState = {
   players: Player[];

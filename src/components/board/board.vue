@@ -32,10 +32,25 @@
             :class="[item.pos, item.color]"
             :style="['--order:' + item.order]"
           >
-            <div class="inside">
-              <h2>{{ item.label }}</h2>
-              <span></span> <strong>{{ item.price }}</strong>
-            </div>
+            <template v-if="item.owner">
+              <div class="inside">
+                <h2>{{ item.label }}</h2>
+                <div
+                  class="d-flex py-2"
+                  :style="{ backgroundColor: item.owner.dominateColor }"
+                >
+                  <!-- <h4>{{ item.owner }}</h4> -->
+                  <span></span> <strong>{{ item.rent.rent }}</strong>
+                </div>
+              </div>
+            </template>
+            <template v-else>
+              <div class="inside">
+                <h2>{{ item.label }}</h2>
+                <!-- <h4>{{ item.owner }} 233454</h4> -->
+                <span></span> <strong>{{ item.price }}</strong>
+              </div>
+            </template>
           </div>
         </template>
       </div>
@@ -46,12 +61,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import board_data from "./board-data.json";
+// import board_data from "./board-data.json";
+import { useBoard } from "@/store/board";
 
 export default defineComponent({
   setup() {
+    const board = useBoard();
     return {
-      boardData: board_data.List,
+      boardData: board.board.List,
     };
   },
 });

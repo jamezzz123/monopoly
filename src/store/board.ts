@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import board_data from "@/components/board/board-data.json";
-import { board } from "@/model/board";
+import { board } from "@/types/board";
 
 // useStore could be anything like useUser, useCart
 // the first argument is a unique id of the store across your application
