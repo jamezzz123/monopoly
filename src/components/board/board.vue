@@ -39,8 +39,8 @@
                   class="d-flex py-2"
                   :style="{ backgroundColor: item.owner.dominateColor }"
                 >
-                  <!-- <h4>{{ item.owner }}</h4> -->
-                  <span></span> <strong>{{ item.rent.rent }}</strong>
+                  <span></span>
+                  <strong>{{ getCurrentPiecePrice(item) }}</strong>
                 </div>
               </div>
             </template>
@@ -63,12 +63,68 @@
 import { defineComponent } from "vue";
 // import board_data from "./board-data.json";
 import { useBoard } from "@/store/board";
+import { board_property } from "@/types/board";
 
 export default defineComponent({
   setup() {
     const board = useBoard();
+
+    function getCurrentPiecePrice(boardProp: board_property) {
+      debugger;
+      if (boardProp.owner !== null) {
+        if (boardProp.property) {
+          if (boardProp.hotel_count === 1) {
+            return boardProp.hotel_cost;
+          }
+          if (boardProp.house_count === 4) {
+            return boardProp.rent.rentH4;
+          }
+          if (boardProp.house_count === 3) {
+            return boardProp.rent.rentH3;
+          }
+          if (boardProp.house_count === 2) {
+            return boardProp.rent.rentH2;
+          }
+          if (boardProp.house_count === 1) {
+            return boardProp.rent.rentH1;
+          }
+          if (checkPropertyGroupHasSameOwner(boardProp)) {
+            return boardProp.rent.rentWC;
+          }
+
+          return boardProp.rent.rent;
+        }
+        if (boardProp.utility) {
+          return boardProp.rent.rent;
+        }
+      }
+    }
+    function checkPropertyGroupHasSameOwner(boardProp: board_property) {
+      if (boardProp.owner !== null) {
+        let currentBoardGroup = boardProp.property_group;
+        let ownerIds = currentBoardGroup.map((elem) => {
+          let owner = board.getBoardProp(elem)?.owner;
+          if (owner) {
+            return owner.id;
+          }
+          return owner;
+        });
+
+        return allAreEqual(ownerIds);
+      }
+    }
+    function allAreEqual(array: any) {
+      if (array.length > 1) {
+        const result = new Set(array).size === 1;
+
+        return result;
+      } else {
+        return false;
+      }
+    }
     return {
       boardData: board.board.List,
+      getCurrentPiecePrice,
     };
   },
 });
