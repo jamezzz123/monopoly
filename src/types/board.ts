@@ -21,14 +21,16 @@ export interface board_property {
   property: boolean;
   utility: boolean;
   property_color: string;
-  rent: {
-    rent: number;
-    rentWC: number;
-    rentH1: number;
-    rentH2: number;
-    rentH3: number;
-    rentH4: number;
-  };
+  rent:
+    | {
+        rent: number;
+        rentWC: number;
+        rentH1: number;
+        rentH2: number;
+        rentH3: number;
+        rentH4: number;
+      }
+    | number;
   house_cost: number;
   house_count: number;
   hotel_cost: number;

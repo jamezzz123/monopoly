@@ -95,7 +95,7 @@ export default defineComponent({
           return boardProp.rent.rent;
         }
         if (boardProp.utility) {
-          return boardProp.rent.rent;
+          return boardProp.rent;
         }
       }
     }

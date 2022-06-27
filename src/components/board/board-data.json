@@ -272,7 +272,7 @@
 
       "property_color": "white",
       "property": false,
-      "utility": false,
+      "utility": true,
       "owner": null,
       "rent": 100
     },
@@ -547,7 +547,7 @@
 
       "property_color": "white",
       "property": false,
-      "utility": false,
+      "utility": true,
       "owner": null,
       "rent": 100
     },
@@ -692,7 +692,7 @@
 
       "property_color": "white",
       "property": false,
-      "utility": false,
+      "utility": true,
       "owner": null,
       "rent": 100
     },
@@ -752,7 +752,7 @@
 
       "property_color": "white",
       "property": false,
-      "utility": false,
+      "utility": true,
       "owner": null,
       "rent": 100
     },
