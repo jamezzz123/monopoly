@@ -73,26 +73,28 @@ export default defineComponent({
       debugger;
       if (boardProp.owner !== null) {
         if (boardProp.property) {
-          if (boardProp.hotel_count === 1) {
-            return boardProp.hotel_cost;
-          }
-          if (boardProp.house_count === 4) {
-            return boardProp.rent.rentH4;
-          }
-          if (boardProp.house_count === 3) {
-            return boardProp.rent.rentH3;
-          }
-          if (boardProp.house_count === 2) {
-            return boardProp.rent.rentH2;
-          }
-          if (boardProp.house_count === 1) {
-            return boardProp.rent.rentH1;
-          }
-          if (checkPropertyGroupHasSameOwner(boardProp)) {
-            return boardProp.rent.rentWC;
-          }
+          if (typeof boardProp.rent === "object") {
+            if (boardProp.hotel_count === 1) {
+              return boardProp.hotel_cost;
+            }
+            if (boardProp.house_count === 4) {
+              return boardProp.rent.rentH4;
+            }
+            if (boardProp.house_count === 3) {
+              return boardProp.rent.rentH3;
+            }
+            if (boardProp.house_count === 2) {
+              return boardProp.rent.rentH2;
+            }
+            if (boardProp.house_count === 1) {
+              return boardProp.rent.rentH1;
+            }
+            if (checkPropertyGroupHasSameOwner(boardProp)) {
+              return boardProp.rent.rentWC;
+            }
 
-          return boardProp.rent.rent;
+            return boardProp.rent.rent;
+          }
         }
         if (boardProp.utility) {
           return boardProp.rent;
