@@ -1,0 +1,766 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board.vue has the expected html structure 1`] = `
+<div>
+  <div
+    class="table stop"
+  >
+    <div
+      class="frame"
+    >
+      <div
+        class="corner tl"
+        data-test="board-item"
+        style="--order:1;"
+      >
+        <div>
+          free 
+          <span>
+            🅿️
+          </span>
+           parking
+        </div>
+      </div>
+      <div
+        class="corner tr"
+        data-test="board-item"
+        style="--order:11;"
+      >
+        <div>
+          go to 
+          <span>
+            👮
+          </span>
+           jail
+        </div>
+      </div>
+      <div
+        class="corner bl"
+        data-test="board-item"
+        style="--order:31;"
+      >
+        <div>
+          in 
+          <span>
+            🗝
+          </span>
+           jail
+        </div>
+      </div>
+      <div
+        class="corner br"
+        data-test="board-item"
+        style="--order:41;"
+      >
+        <div>
+          <em>
+            collect 
+            <br />
+             £200 salary as you pass
+          </em>
+           go 
+          <span>
+            ↖️
+          </span>
+        </div>
+      </div>
+      <div
+        class="center"
+        style="--order:13;"
+      >
+        <div
+          class="logo"
+        >
+          monopoly
+        </div>
+        <div
+          class="cards community"
+        >
+          community chest
+        </div>
+        <div
+          class="cards chance"
+        >
+          chance
+        </div>
+      </div>
+      
+      <div
+        class="top red"
+        data-test="board-item"
+        style="--order: 2;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            strand
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            220
+          </strong>
+        </div>
+      </div>
+      <div
+        class="top none"
+        data-test="board-item"
+        style="--order: 3;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            chance
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong />
+        </div>
+      </div>
+      <div
+        class="top red"
+        data-test="board-item"
+        style="--order: 4;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            fleet street
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            220
+          </strong>
+        </div>
+      </div>
+      <div
+        class="top none"
+        data-test="board-item"
+        style="--order: 5;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            trafalgar square
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            240
+          </strong>
+        </div>
+      </div>
+      <div
+        class="top none"
+        data-test="board-item"
+        style="--order: 6;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            fenchurch st. station
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            200
+          </strong>
+        </div>
+      </div>
+      <div
+        class="top yellow"
+        data-test="board-item"
+        style="--order: 7;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            leicester square
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            260
+          </strong>
+        </div>
+      </div>
+      <div
+        class="top yellow"
+        data-test="board-item"
+        style="--order: 8;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            ceventry street
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            200
+          </strong>
+        </div>
+      </div>
+      <div
+        class="top none"
+        data-test="board-item"
+        style="--order: 9;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            water&lt;br&gt;works
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            150
+          </strong>
+        </div>
+      </div>
+      <div
+        class="top yellow"
+        data-test="board-item"
+        style="--order: 10;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            piccadilly
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            280
+          </strong>
+        </div>
+      </div>
+      <div
+        class="left orange"
+        data-test="board-item"
+        style="--order: 12;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            vine street
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            200
+          </strong>
+        </div>
+      </div>
+      <div
+        class="left orange"
+        data-test="board-item"
+        style="--order: 15;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            marlborog'h street
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            200
+          </strong>
+        </div>
+      </div>
+      <div
+        class="left none"
+        data-test="board-item"
+        style="--order: 17;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            community chest
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong />
+        </div>
+      </div>
+      <div
+        class="left orange"
+        data-test="board-item"
+        style="--order: 19;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            bow street
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            180
+          </strong>
+        </div>
+      </div>
+      <div
+        class="left none"
+        data-test="board-item"
+        style="--order: 21;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            marylebone station
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            200
+          </strong>
+        </div>
+      </div>
+      <div
+        class="left pink"
+        data-test="board-item"
+        style="--order: 23;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            northumrl'd avenue
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            160
+          </strong>
+        </div>
+      </div>
+      <div
+        class="left pink"
+        data-test="board-item"
+        style="--order: 25;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            whitehall
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            140
+          </strong>
+        </div>
+      </div>
+      <div
+        class="left none"
+        data-test="board-item"
+        style="--order: 27;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            electric company
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            150
+          </strong>
+        </div>
+      </div>
+      <div
+        class="left pink"
+        data-test="board-item"
+        style="--order: 29;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            pall mall
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            140
+          </strong>
+        </div>
+      </div>
+      <div
+        class="right green"
+        data-test="board-item"
+        style="--order: 14;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            regent street
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            300
+          </strong>
+        </div>
+      </div>
+      <div
+        class="right green"
+        data-test="board-item"
+        style="--order: 16;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            oxford street
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            300
+          </strong>
+        </div>
+      </div>
+      <div
+        class="right none"
+        data-test="board-item"
+        style="--order: 18;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            community chest
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong />
+        </div>
+      </div>
+      <div
+        class="right green"
+        data-test="board-item"
+        style="--order: 20;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            bond street
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            320
+          </strong>
+        </div>
+      </div>
+      <div
+        class="right none"
+        data-test="board-item"
+        style="--order: 22;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            liverpool st. station
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            320
+          </strong>
+        </div>
+      </div>
+      <div
+        class="right none"
+        data-test="board-item"
+        style="--order: 24;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            chance
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong />
+        </div>
+      </div>
+      <div
+        class="right blue"
+        data-test="board-item"
+        style="--order: 26;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            park lane
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            350
+          </strong>
+        </div>
+      </div>
+      <div
+        class="right none"
+        data-test="board-item"
+        style="--order: 28;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            super&lt;br /&gt;tax
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            100
+          </strong>
+        </div>
+      </div>
+      <div
+        class="right blue"
+        data-test="board-item"
+        style="--order: 30;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            mayfair
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            400
+          </strong>
+        </div>
+      </div>
+      <div
+        class="bottom sky"
+        data-test="board-item"
+        style="--order: 32;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            pentonville road
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            120
+          </strong>
+        </div>
+      </div>
+      <div
+        class="bottom sky"
+        data-test="board-item"
+        style="--order: 33;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            euston road
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            100
+          </strong>
+        </div>
+      </div>
+      <div
+        class="bottom none"
+        data-test="board-item"
+        style="--order: 34;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            chance
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong />
+        </div>
+      </div>
+      <div
+        class="bottom sky"
+        data-test="board-item"
+        style="--order: 35;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            the angel, islington
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            100
+          </strong>
+        </div>
+      </div>
+      <div
+        class="bottom none"
+        data-test="board-item"
+        style="--order: 36;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            kings cross station
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            200
+          </strong>
+        </div>
+      </div>
+      <div
+        class="bottom none"
+        data-test="board-item"
+        style="--order: 37;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            income&lt;br /&gt;tax
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            200
+          </strong>
+        </div>
+      </div>
+      <div
+        class="bottom brown"
+        data-test="board-item"
+        style="--order: 38;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            whitechapel road
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            60
+          </strong>
+        </div>
+      </div>
+      <div
+        class="bottom none"
+        data-test="board-item"
+        style="--order: 39;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            community chest
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong />
+        </div>
+      </div>
+      <div
+        class="bottom brown"
+        data-test="board-item"
+        style="--order: 40;"
+      >
+        <div
+          class="inside"
+        >
+          <h2>
+            old kent road
+          </h2>
+          <!-- &lt;h4&gt;{{ item.owner }} 233454&lt;/h4&gt; -->
+          <span />
+           
+          <strong>
+            60
+          </strong>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+</div>
+`;

@@ -2,16 +2,16 @@
   <div>
     <div class="table stop">
       <div class="frame">
-        <div class="corner tl" style="--order: 1">
+        <div class="corner tl" style="--order: 1" data-test="board-item">
           <div>free <span>🅿️</span> parking</div>
         </div>
-        <div class="corner tr" style="--order: 11">
+        <div class="corner tr" style="--order: 11" data-test="board-item">
           <div>go to <span>👮</span> jail</div>
         </div>
-        <div class="corner bl" style="--order: 31">
+        <div class="corner bl" style="--order: 31" data-test="board-item">
           <div>in <span>🗝</span> jail</div>
         </div>
-        <div class="corner br" style="--order: 41">
+        <div class="corner br" style="--order: 41" data-test="board-item">
           <div>
             <em
               >collect <br />
@@ -31,6 +31,7 @@
             :key="index"
             :class="[item.pos, item.color]"
             :style="['--order:' + item.order]"
+            data-test="board-item"
           >
             <template v-if="item.owner">
               <div class="inside">
