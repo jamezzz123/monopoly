@@ -10,7 +10,7 @@
       <Dice class="absolute" style="top: 30%; left: 23%" />
     </Board>
     <div class="flex-1">
-      <div class="py-2 px-3">
+      <div class="py-2 px-3 sticky-div">
         <PlayerCard
           v-for="(player, index) in players"
           :key="index"
@@ -187,5 +187,10 @@ export default defineComponent({
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+.sticky-div {
+  position: sticky;
+  top: 0px;
 }
 </style>
