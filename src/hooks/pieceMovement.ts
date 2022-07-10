@@ -14,7 +14,7 @@ export default function pieceMovement() {
     { image, path = { start: 0, end: 0 } }: Player,
     totalDiceRoll: number
   ) => {
-    console.log(path.end);
+    const newPos = (path.start / 0.025 + totalDiceRoll) * 0.025;
     return new Promise((resolve, reject) => {
       const tween = gsap.to(`#${image}`, {
         motionPath: {
@@ -22,8 +22,8 @@ export default function pieceMovement() {
           align: "#path",
           alignOrigin: [0.5, 0.5],
           // autoRotate: true,
-          start: path.start,
-          end: path.start + 0.025 * totalDiceRoll,
+          start: Number(path.start),
+          end: Number(newPos),
         },
         delay: 0,
         duration: 2,
@@ -34,7 +34,14 @@ export default function pieceMovement() {
       });
 
       tween.vars.onComplete = () => {
-        resolve(tween.vars.motionPath as moves);
+        console.log(tween.vars.motionPath);
+        const motionPath = tween.vars.motionPath as moves;
+        if (motionPath.end >= 1) {
+          motionPath.end = motionPath.end - 1;
+          resolve(motionPath as moves);
+        } else {
+          resolve(tween.vars.motionPath as moves);
+        }
       };
     });
   };
