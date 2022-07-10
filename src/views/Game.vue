@@ -42,6 +42,7 @@ import { board, board_property } from "@/types/board";
 import PropertyModal from "@/components/PropertyModal.vue";
 import { getPlayerBoardPosition } from "@/utils/index";
 import { useBilling } from "@/hooks/billing";
+import { useProperty } from "@/hooks/property";
 import ColorThief from "colorthief";
 
 const colorThief = new ColorThief();
@@ -54,7 +55,7 @@ export default defineComponent({
   },
   setup() {
     let property = ref<null | { show: (agr: any) => null }>(null);
-
+    let boardProp = useProperty();
     const billing = useBilling();
     const Players = usePlayerStore();
     const board = useBoard();
@@ -138,13 +139,22 @@ export default defineComponent({
         let playerBoardPosition = getPlayerBoardPosition(moves.end);
         // find the the board object where that border position
         let propertyDetails = getBoardPositionDetails(playerBoardPosition);
-        // console.log(place.value);
-        // alert(JSON.stringify(property.details));
-        let result = await property.value?.show(propertyDetails);
-        console.log(result);
-        console.log(propertyDetails);
-        if (result && propertyDetails) {
-          billing.buyProperty(propertyDetails.id);
+        if (propertyDetails?.owner === null) {
+          let result = await property.value?.show(propertyDetails);
+
+          if (result && propertyDetails) {
+            billing.buyProperty(propertyDetails.id);
+          }
+        } else {
+          if (propertyDetails) {
+            // debugger;
+            let prices = boardProp.getCurrentPiecePrice(propertyDetails);
+            if (prices) {
+              billing.subtractCost(prices);
+            }
+
+            // console.trace(prices);
+          }
         }
 
         updatePlayerPosition(moves.end);

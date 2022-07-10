@@ -26,7 +26,13 @@ export function useBilling() {
       }
     }
   }
+
+  function subtractCost(amount: number) {
+    const currentPlayer = player.getCurrentPlayer;
+    currentPlayer.bankBalance -= Number(amount);
+  }
   return {
     buyProperty,
+    subtractCost,
   };
 }

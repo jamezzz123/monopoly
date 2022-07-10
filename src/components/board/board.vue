@@ -71,7 +71,6 @@ export default defineComponent({
     const board = useBoard();
 
     function getCurrentPiecePrice(boardProp: board_property) {
-      debugger;
       if (boardProp.owner !== null) {
         if (boardProp.property) {
           if (typeof boardProp.rent === "object") {
