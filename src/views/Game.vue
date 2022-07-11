@@ -134,10 +134,21 @@ export default defineComponent({
           Players.getCurrentPlayer,
           diceRollCount
         )) as moves;
+
+        // check if player can has crossed the starting point
+        let currentPlayer = Players.getCurrentPlayer;
+        if (moves.end >= 1) {
+          moves.end = moves.end - 1;
+          currentPlayer.bankBalance += 1000;
+
+          updatePlayerPosition(moves.end);
+        } else {
+          updatePlayerPosition(moves.end);
+        }
+
         // calculate the position
         // Number.parseInt(moves.end / 0.025);
         let playerBoardPosition = getPlayerBoardPosition(moves.end);
-        let currentPlayer = Players.getCurrentPlayer;
         // find the the board object where that border position
         let propertyDetails = getBoardPositionDetails(playerBoardPosition);
         if (propertyDetails?.owner === null) {
@@ -158,7 +169,7 @@ export default defineComponent({
           }
         }
 
-        updatePlayerPosition(moves.end);
+        // updatePlayerPosition(moves.end);
         Players.updatePlayerTurn();
       }
     };

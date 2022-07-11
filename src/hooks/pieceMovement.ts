@@ -35,13 +35,14 @@ export default function pieceMovement() {
 
       tween.vars.onComplete = () => {
         console.log(tween.vars.motionPath);
-        const motionPath = tween.vars.motionPath as moves;
-        if (motionPath.end >= 1) {
-          motionPath.end = motionPath.end - 1;
-          resolve(motionPath as moves);
-        } else {
-          resolve(tween.vars.motionPath as moves);
-        }
+        resolve(tween.vars.motionPath as moves);
+        // const motionPath = tween.vars.motionPath as moves;
+        // if (motionPath.end >= 1) {
+        //   motionPath.end = motionPath.end - 1;
+        //   resolve(motionPath as moves);
+        // } else {
+        //   resolve(tween.vars.motionPath as moves);
+        // }
       };
     });
   };
