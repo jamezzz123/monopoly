@@ -40,5 +40,9 @@ export const usePlayerStore = defineStore("player", {
     getPlayerTurn: (state) => {
       return state.playerTurn;
     },
+    getPlayerById: (state) => {
+      return (playerId: string) =>
+        state.players.find((player) => player.id === playerId);
+    },
   },
 });

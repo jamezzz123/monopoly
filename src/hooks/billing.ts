@@ -27,12 +27,24 @@ export function useBilling() {
     }
   }
 
-  function subtractCost(amount: number) {
-    const currentPlayer = player.getCurrentPlayer;
-    currentPlayer.bankBalance -= Number(amount);
+  function subtractFunds(playerId: string, amount: number) {
+    const dPlayer = player.getPlayerById(playerId);
+    if (dPlayer) {
+      dPlayer.bankBalance -= Number(amount);
+    }
+  }
+
+  function addFunds(playerId: string, amount: number) {
+    const dPlayer = player.getPlayerById(playerId);
+    if (dPlayer) {
+      dPlayer.bankBalance += Number(amount);
+    }
+    // const currentPlayer = player.getCurrentPlayer;
+    // currentPlayer.bankBalance -= Number(amount);
   }
   return {
     buyProperty,
-    subtractCost,
+    subtractFunds,
+    addFunds,
   };
 }

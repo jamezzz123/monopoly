@@ -137,6 +137,7 @@ export default defineComponent({
         // calculate the position
         // Number.parseInt(moves.end / 0.025);
         let playerBoardPosition = getPlayerBoardPosition(moves.end);
+        let currentPlayer = Players.getCurrentPlayer;
         // find the the board object where that border position
         let propertyDetails = getBoardPositionDetails(playerBoardPosition);
         if (propertyDetails?.owner === null) {
@@ -145,15 +146,15 @@ export default defineComponent({
           if (result && propertyDetails) {
             billing.buyProperty(propertyDetails.id);
           }
-        } else {
-          if (propertyDetails) {
-            // debugger;
-            let prices = boardProp.getCurrentPiecePrice(propertyDetails);
-            if (prices) {
-              billing.subtractCost(prices);
-            }
-
-            // console.trace(prices);
+        }
+        if (
+          propertyDetails?.owner !== null &&
+          (propertyDetails?.property || propertyDetails?.utility)
+        ) {
+          let prices = boardProp.getCurrentPiecePrice(propertyDetails);
+          if (prices) {
+            billing.subtractFunds(currentPlayer.id, prices);
+            billing.addFunds(propertyDetails.owner.id, prices);
           }
         }
 
