@@ -25,6 +25,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+          package-manager: yarn
 
       - run: yarn run build --if-present
       - run: yarn test:e2e
@@ -40,4 +41,4 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           build: yarn run build
-          start: yarn start
+          start: yarn serve
