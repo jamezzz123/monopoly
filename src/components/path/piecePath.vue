@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, onMounted, ref } from "vue";
-import { Player } from "@/model/player";
+import { Player } from "@/types/player";
 // import useMovement from "@/hooks/pieceMovement";
 
 export default defineComponent({

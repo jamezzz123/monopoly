@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import { Player } from "@/model/player";
+import { Player } from "@/types/player";
 
 export interface State {
   players: Player[];

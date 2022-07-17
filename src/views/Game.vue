@@ -10,7 +10,7 @@
       <Dice class="absolute" style="top: 30%; left: 23%" />
     </Board>
     <div class="flex-1">
-      <div class="py-2 px-3">
+      <div class="py-2 px-3 sticky-div">
         <PlayerCard
           v-for="(player, index) in players"
           :key="index"
@@ -21,21 +21,32 @@
         ></PlayerCard>
       </div>
     </div>
+    <transition name="modal">
+      <PropertyModal ref="property" />
+    </transition>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, reactive } from "vue";
-// import { useStore } from "vuex";
+import { defineComponent, onMounted, ref, reactive, nextTick } from "vue";
 import { usePlayerStore } from "@/store/player";
+import { useBoard } from "@/store/board";
 import Board from "@/components/board/board.vue";
 import Dice from "@/components/dice/dice.vue";
 import PiecePath from "@/components/path/piecePath.vue";
 import PlayerCard from "@/components/PlayerCard.vue";
 import useMovement from "@/hooks/pieceMovement";
 import useDiceRoll from "@/hooks/diceRoll";
-import { Player } from "@/model/player";
+import { Player } from "@/types/player";
+import { board, board_property } from "@/types/board";
+import PropertyModal from "@/components/PropertyModal.vue";
+import { getPlayerBoardPosition } from "@/utils/index";
+import { useBilling } from "@/hooks/billing";
+import { useProperty } from "@/hooks/property";
+import ColorThief from "colorthief";
 
+const colorThief = new ColorThief();
+console.log(colorThief);
 export default defineComponent({
   data() {
     return {
@@ -43,32 +54,56 @@ export default defineComponent({
     };
   },
   setup() {
+    let property = ref<null | { show: (agr: any) => null }>(null);
+    let boardProp = useProperty();
+    const billing = useBilling();
     const Players = usePlayerStore();
+    const board = useBoard();
+
     Players.addPlayer({
+      id: "go",
       image: "gorilla",
       link: require("@/assets/svg/001-gorilla.svg"),
       location: 1,
       name: "Jack",
       bankBalance: 1000,
       properties: [1, 5, 6, 6, 7, 8],
+      dominateColor: "red",
     });
     Players.addPlayer({
+      id: "ow",
       image: "owl",
       link: require("@/assets/svg/001-owl.svg"),
       location: 1,
       name: "mr jack",
       bankBalance: 1000,
       properties: [],
+      dominateColor: "blue",
     });
 
     Players.addPlayer({
+      id: "pa",
       image: "panda",
       link: require("@/assets/svg/006-panda.svg"),
       location: 1,
       name: "mr jacie",
       bankBalance: 1000,
       properties: [],
+      dominateColor: "green",
     });
+
+    setTimeout(() => {
+      Players.players.forEach((element) => {
+        // console.log(element);
+        let img = document.getElementById(element.image) as HTMLImageElement;
+        console.log(img);
+        if (img) {
+          let color = colorThief.getColor(img);
+          console.log(`rgb(${color.join(",")})`);
+          element.dominateColor = `rgb(${color.join(",")})`;
+        }
+      });
+    }, 3000);
 
     let { rotateDice } = useDiceRoll();
     let { moveObject } = useMovement();
@@ -84,6 +119,13 @@ export default defineComponent({
       start: number;
       end: number;
     };
+    function getBoardPositionDetails(
+      playerPosition: number
+    ): board_property | undefined {
+      return board.board.List.find(
+        (item) => item.board_position === playerPosition
+      );
+    }
     const stateGame = async () => {
       GameStart.value = true;
       while (GameStart.value) {
@@ -92,19 +134,59 @@ export default defineComponent({
           Players.getCurrentPlayer,
           diceRollCount
         )) as moves;
-        updatePlayerPosition(moves.end);
+
+        // check if player can has crossed the starting point
+        let currentPlayer = Players.getCurrentPlayer;
+        if (moves.end >= 1) {
+          moves.end = moves.end - 1;
+          currentPlayer.bankBalance += 1000;
+
+          updatePlayerPosition(moves.end);
+        } else {
+          updatePlayerPosition(moves.end);
+        }
+
+        // calculate the position
+        // Number.parseInt(moves.end / 0.025);
+        let playerBoardPosition = getPlayerBoardPosition(moves.end);
+        // find the the board object where that border position
+        let propertyDetails = getBoardPositionDetails(playerBoardPosition);
+        if (propertyDetails?.owner === null) {
+          let result = await property.value?.show(propertyDetails);
+
+          if (result && propertyDetails) {
+            billing.buyProperty(propertyDetails.id);
+          }
+        }
+        if (
+          propertyDetails?.owner !== null &&
+          (propertyDetails?.property || propertyDetails?.utility)
+        ) {
+          let prices = boardProp.getCurrentPiecePrice(propertyDetails);
+          if (prices) {
+            billing.subtractFunds(currentPlayer.id, prices);
+            billing.addFunds(propertyDetails.owner.id, prices);
+          }
+        }
+
+        // updatePlayerPosition(moves.end);
         Players.updatePlayerTurn();
       }
     };
 
     onMounted(async () => {
-      await stateGame();
+      nextTick().then(() => {
+        setTimeout(async () => {
+          await stateGame();
+        }, 4000);
+      });
     });
 
     return {
       players: Players.players,
       turn: Players.getPlayerTurn,
       Players,
+      property,
     };
   },
   components: {
@@ -112,8 +194,25 @@ export default defineComponent({
     Dice,
     PiecePath,
     PlayerCard,
+    PropertyModal,
   },
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-active .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.sticky-div {
+  position: sticky;
+  top: 0px;
+}
+</style>

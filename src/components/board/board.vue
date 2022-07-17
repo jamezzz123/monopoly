@@ -2,16 +2,16 @@
   <div>
     <div class="table stop">
       <div class="frame">
-        <div class="corner tl" style="--order: 1">
+        <div class="corner tl" style="--order: 1" data-test="board-item">
           <div>free <span>🅿️</span> parking</div>
         </div>
-        <div class="corner tr" style="--order: 11">
+        <div class="corner tr" style="--order: 11" data-test="board-item">
           <div>go to <span>👮</span> jail</div>
         </div>
-        <div class="corner bl" style="--order: 31">
+        <div class="corner bl" style="--order: 31" data-test="board-item">
           <div>in <span>🗝</span> jail</div>
         </div>
-        <div class="corner br" style="--order: 41">
+        <div class="corner br" style="--order: 41" data-test="board-item">
           <div>
             <em
               >collect <br />
@@ -31,11 +31,27 @@
             :key="index"
             :class="[item.pos, item.color]"
             :style="['--order:' + item.order]"
+            data-test="board-item"
           >
-            <div class="inside">
-              <h2>{{ item.label }}</h2>
-              <span></span> <strong>{{ item.price }}</strong>
-            </div>
+            <template v-if="item.owner">
+              <div class="inside">
+                <h2>{{ item.label }}</h2>
+                <div
+                  class="d-flex py-2"
+                  :style="{ backgroundColor: item.owner.dominateColor }"
+                >
+                  <span></span>
+                  <strong>{{ getCurrentPiecePrice(item) }}</strong>
+                </div>
+              </div>
+            </template>
+            <template v-else>
+              <div class="inside">
+                <h2>{{ item.label }}</h2>
+                <!-- <h4>{{ item.owner }} 233454</h4> -->
+                <span></span> <strong>{{ item.price }}</strong>
+              </div>
+            </template>
           </div>
         </template>
       </div>
@@ -46,12 +62,71 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import board_data from "./board-data.json";
+// import board_data from "./board-data.json";
+import { useBoard } from "@/store/board";
+import { board_property } from "@/types/board";
 
 export default defineComponent({
   setup() {
+    const board = useBoard();
+
+    function getCurrentPiecePrice(boardProp: board_property) {
+      if (boardProp.owner !== null) {
+        if (boardProp.property) {
+          if (typeof boardProp.rent === "object") {
+            if (boardProp.hotel_count === 1) {
+              return boardProp.hotel_cost;
+            }
+            if (boardProp.house_count === 4) {
+              return boardProp.rent.rentH4;
+            }
+            if (boardProp.house_count === 3) {
+              return boardProp.rent.rentH3;
+            }
+            if (boardProp.house_count === 2) {
+              return boardProp.rent.rentH2;
+            }
+            if (boardProp.house_count === 1) {
+              return boardProp.rent.rentH1;
+            }
+            if (checkPropertyGroupHasSameOwner(boardProp)) {
+              return boardProp.rent.rentWC;
+            }
+
+            return boardProp.rent.rent;
+          }
+        }
+        if (boardProp.utility) {
+          return boardProp.rent;
+        }
+      }
+    }
+    function checkPropertyGroupHasSameOwner(boardProp: board_property) {
+      if (boardProp.owner !== null) {
+        let currentBoardGroup = boardProp.property_group;
+        let ownerIds = currentBoardGroup.map((elem) => {
+          let owner = board.getBoardProp(elem)?.owner;
+          if (owner) {
+            return owner.id;
+          }
+          return owner;
+        });
+
+        return allAreEqual(ownerIds);
+      }
+    }
+    function allAreEqual(array: any) {
+      if (array.length > 1) {
+        const result = new Set(array).size === 1;
+
+        return result;
+      } else {
+        return false;
+      }
+    }
     return {
-      boardData: board_data.List,
+      boardData: board.board.List,
+      getCurrentPiecePrice,
     };
   },
 });
