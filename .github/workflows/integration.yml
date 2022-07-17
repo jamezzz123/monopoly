@@ -42,4 +42,4 @@ jobs:
         with:
           start: yarn run serve
           wait-on: "http://localhost:8080"
-          config_file: cypress.json
+          config_file: cypress.config.ts
