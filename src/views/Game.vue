@@ -8,6 +8,11 @@
         style="top: 6%; left: 5%"
       />
       <Dice class="absolute" style="top: 30%; left: 23%" />
+      <div class="sticky bottom-1/4" style="z-index: 1200">
+        <div class="absolute" style="left: 65%">
+          <DiceRollButton />
+        </div>
+      </div>
     </Board>
     <div class="flex-1">
       <div class="py-2 px-3 sticky-div">
@@ -21,6 +26,7 @@
         ></PlayerCard>
       </div>
     </div>
+
     <transition name="modal">
       <PropertyModal ref="property" />
     </transition>
@@ -35,6 +41,7 @@ import Board from "@/components/board/board.vue";
 import Dice from "@/components/dice/dice.vue";
 import PiecePath from "@/components/path/piecePath.vue";
 import PlayerCard from "@/components/PlayerCard.vue";
+import DiceRollButton from "@/components/DiceRollButton.vue";
 import useMovement from "@/hooks/pieceMovement";
 import useDiceRoll from "@/hooks/diceRoll";
 import { Player } from "@/types/player";
@@ -177,7 +184,7 @@ export default defineComponent({
     onMounted(async () => {
       nextTick().then(() => {
         setTimeout(async () => {
-          await stateGame();
+          // await stateGame();
         }, 4000);
       });
     });
@@ -195,6 +202,7 @@ export default defineComponent({
     PiecePath,
     PlayerCard,
     PropertyModal,
+    DiceRollButton,
   },
 });
 </script>
