@@ -8378,6 +8378,19 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
+hex-to-hsl@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hex-to-hsl/-/hex-to-hsl-1.0.2.tgz#d5c59ece00178444e821c8fc58a430afc09831c2"
+  integrity sha512-7E2WDAXDNb51Ezc+/MyXOt/NbKgk4LPtEHpUBU0McJVF1seFxUhiOQyf9Sv/5NwTQntsEqzevCsv/Y6chOFLvg==
+  dependencies:
+    hex-to-rgb "^1.0.1"
+    rgb-to-hsl "0.0.2"
+
+hex-to-rgb@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/hex-to-rgb/-/hex-to-rgb-1.0.1.tgz#100b9df126b32f2762adf8486be68c65ef8ed2a4"
+  integrity sha512-2GsESdjpJIrRL8I7iPOp0r0wczJBk++Q/zFrviNaTRPWMIgk5bPqDmKPUvRHN0SZrYT9N1e+xZU1niYJ6QxzMg==
+
 highlight.js@^10.1.1, highlight.js@^10.7.1, highlight.js@~10.7.0:
   version "10.7.3"
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.7.3.tgz#697272e3991356e40c3cac566a74eef681756531"
@@ -13784,6 +13797,11 @@ rgb-regex@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/rgb-regex/-/rgb-regex-1.0.1.tgz#c0e0d6882df0e23be254a475e8edd41915feaeb1"
   integrity sha1-wODWiC3w4jviVKR16O3UGRX+rrE=
+
+rgb-to-hsl@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/rgb-to-hsl/-/rgb-to-hsl-0.0.2.tgz#36f9fc286376b90acc457e699005b4cb42d350ec"
+  integrity sha512-92EhT0XUmmC1APQj5NKl3LoNPtZsDBzivTjZAikFuADreIQgqLnJgnnP5gY/mf52UqglAwVDAD/0arY9N35KFg==
 
 rgba-regex@^1.0.0:
   version "1.0.0"

@@ -10,6 +10,6 @@ export interface Player {
   name: string;
   bankBalance: number;
   properties: number[];
-  path?: path;
+  path: path;
   dominateColor: string;
 }
