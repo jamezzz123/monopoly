@@ -69,6 +69,7 @@ import PropertyModal from "@/components/PropertyModal.vue";
 import { getPlayerBoardPosition } from "@/utils/index";
 import { useBilling } from "@/hooks/billing";
 import { useProperty } from "@/hooks/property";
+import { prominent } from "color.js";
 // import ColorThief from "colorthief";
 // import ColorThief from "../../node_modules/colorthief/dist/color-thief";
 
@@ -224,18 +225,49 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      // setTimeout(() => {
-      //   Players.players.forEach((element) => {
-      //     // console.log(element);
-      //     let img = document.getElementById(element.image) as HTMLImageElement;
-      //     console.log(img);
-      //     if (img) {
-      //       let color = colorThief.getColor(img);
-      //       console.log(`rgb(${color.join(",")})`);
-      //       element.dominateColor = `rgb(${color.join(",")})`;
-      //     }
-      //   });
-      // }, 5000);
+      setTimeout(() => {
+        let img = document.getElementById(
+          Players.players[0].image
+        ) as HTMLImageElement;
+        console.log(img);
+        if (img) {
+          // rgba(75,173,58,0.50)
+          prominent(img, { format: "hex", sample: 20, amount: 1 }).then(
+            (color) => {
+              console.log(color); // [241, 221, 63]
+              Players.players[0].dominateColor = `${color}`;
+            }
+          );
+        }
+
+        img = document.getElementById(
+          Players.players[1].image
+        ) as HTMLImageElement;
+        console.log(img);
+        if (img) {
+          // rgba(75,173,58,0.50)
+          prominent(img, { format: "hex", sample: 20, amount: 1 }).then(
+            (color) => {
+              console.log(color); // [241, 221, 63]
+              Players.players[1].dominateColor = `${color}`;
+            }
+          );
+        }
+
+        img = document.getElementById(
+          Players.players[2].image
+        ) as HTMLImageElement;
+        console.log(img);
+        if (img) {
+          // rgba(75,173,58,0.50)
+          prominent(img, { format: "hex", sample: 20, amount: 1 }).then(
+            (color) => {
+              console.log(color); // [241, 221, 63]
+              Players.players[2].dominateColor = `${color}`;
+            }
+          );
+        }
+      }, 5000);
     });
 
     return {
