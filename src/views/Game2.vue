@@ -28,6 +28,10 @@
           <ClassicButton v-else :color="'#01a9ea'" @click="Done()"
             >Done</ClassicButton
           >
+
+          <ClassicButton :color="'#f48225'" @click="startAudio()"
+            >Start Audio</ClassicButton
+          >
         </div>
       </div>
     </Board>
@@ -51,7 +55,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, reactive, nextTick } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { usePlayerStore } from "@/store/player";
 import { useBoard } from "@/store/board";
 import Board from "@/components/board/board.vue";
@@ -70,13 +74,7 @@ import { getPlayerBoardPosition } from "@/utils/index";
 import { useBilling } from "@/hooks/billing";
 import { useProperty } from "@/hooks/property";
 import { prominent } from "color.js";
-// import ColorThief from "colorthief";
-// import ColorThief from "../../node_modules/colorthief/dist/color-thief";
-
-// const colorThief = new ColorThief();
-
-// eslint-disable-next-line no-undef
-// const colorThief = new ColorThief();
+import PlaySound from "@/assets/js/sound";
 
 export default defineComponent({
   setup() {
@@ -175,8 +173,12 @@ export default defineComponent({
     async function RollDiceFunc() {
       rolledDice.value = true;
       let currentPlayer = Players.getCurrentPlayer;
+      PlaySound.diceRoll.play();
       let diceRollCount = diceSum(await rotateDice());
+      PlaySound.diceRoll.stop();
+      PlaySound.pieceMovement.play();
       let moves = (await moveObject(currentPlayer, diceRollCount)) as moves;
+      PlaySound.pieceMovement.stop();
 
       if (moves.end >= 1) {
         moves.end = moves.end - 1;
@@ -206,6 +208,7 @@ export default defineComponent({
       let propertyDetails = getBoardPositionDetails(playerBoardPosition);
 
       if (propertyDetails?.owner === null) {
+        PlaySound.pop.play();
         let result = await property.value?.show(propertyDetails);
 
         if (result && propertyDetails) {
@@ -221,6 +224,14 @@ export default defineComponent({
           billing.subtractFunds(currentPlayer.id, prices);
           billing.addFunds(propertyDetails.owner.id, prices);
         }
+      }
+    }
+    function startAudio() {
+      console.log(PlaySound.aot.playing());
+      if (PlaySound.aot.playing()) {
+        PlaySound.aot.pause();
+      } else {
+        PlaySound.aot.play();
       }
     }
 
@@ -278,6 +289,7 @@ export default defineComponent({
       RollDiceFunc,
       Done,
       rolledDice,
+      startAudio,
     };
   },
   components: {

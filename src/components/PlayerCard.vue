@@ -25,6 +25,7 @@
 
 <script>
 import anime from "animejs";
+import PlaySound from "@/assets/js/sound";
 export default {
   props: {
     name: {
@@ -54,6 +55,7 @@ export default {
     amount(newVal, oldVal) {
       let colorArry =
         newVal - oldVal > 0 ? ["#eab676", "#10b981"] : ["#eab676", "#A03232"];
+      PlaySound.money.play();
       anime({
         targets: this.$refs.amount,
         innerHTML: [oldVal, newVal],
@@ -63,6 +65,7 @@ export default {
         endDelay: 1000,
         round: 1,
         complete: () => {
+          PlaySound.money.pause();
           this.$refs.amount.style.color = "#10b981";
         },
       });

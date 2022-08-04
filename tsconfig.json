@@ -36,7 +36,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/assets/js/sound.js"  ],
   "exclude": [
     "node_modules"
   ]
