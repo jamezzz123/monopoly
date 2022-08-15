@@ -37,6 +37,7 @@
     </Board>
     <div class="flex-1">
       <div class="py-2 px-3 sticky-div">
+        <SettingsPan></SettingsPan>
         <PlayerCard
           v-for="(player, index) in players"
           :key="index"
@@ -62,6 +63,7 @@ import Board from "@/components/board/board.vue";
 import Dice from "@/components/dice/dice.vue";
 import PiecePath from "@/components/path/piecePath.vue";
 import PlayerCard from "@/components/PlayerCard.vue";
+import SettingsPan from "@/components/SettingsPan.vue";
 // import DiceRollButton from "@/components/DiceRollButton.vue";
 import ClassicButton from "@/components/ClassicButton.vue";
 import { Icon } from "@iconify/vue";
@@ -301,6 +303,7 @@ export default defineComponent({
     // DiceRollButton,
     ClassicButton,
     Icon,
+    SettingsPan,
   },
 });
 </script>
