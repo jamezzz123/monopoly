@@ -8,7 +8,7 @@
         style="top: 6%; left: 5%"
       />
       <Dice class="absolute" style="top: 30%; left: 23%" />
-      <div class="sticky bottom-1/4" style="z-index: 1200">
+      <div class="sticky bottom-2/4" style="z-index: 1200">
         <div class="absolute" style="left: 65%">
           <ClassicButton
             v-if="!rolledDice"
@@ -175,6 +175,10 @@ export default defineComponent({
     async function RollDiceFunc() {
       rolledDice.value = true;
       let currentPlayer = Players.getCurrentPlayer;
+      if (currentPlayer && currentPlayer.image) {
+        let elem = document.getElementById(currentPlayer?.image);
+        elem?.scrollIntoView();
+      }
       PlaySound.diceRoll.play();
       let diceRollCount = diceSum(await rotateDice());
       PlaySound.diceRoll.stop();
