@@ -186,6 +186,11 @@ export default defineComponent({
       let moves = (await moveObject(currentPlayer, diceRollCount)) as moves;
       PlaySound.pieceMovement.stop();
 
+      if (currentPlayer && currentPlayer.image) {
+        let elem = document.getElementById(currentPlayer?.image);
+        elem?.scrollIntoView();
+      }
+
       if (moves.end >= 1) {
         moves.end = moves.end - 1;
         currentPlayer.bankBalance += 1000;
