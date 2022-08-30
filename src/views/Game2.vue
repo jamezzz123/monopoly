@@ -8,8 +8,8 @@
         style="top: 6%; left: 5%"
       />
       <Dice class="absolute" style="top: 30%; left: 23%" />
-      <div class="sticky bottom-2/4" style="z-index: 1200">
-        <div class="absolute" style="left: 65%">
+      <div class="sticky button-action-dice" style="z-index: 1200">
+        <div class="absolute" style="left: 67%">
           <ClassicButton
             v-if="!rolledDice"
             :color="'#be2e25'"
@@ -29,10 +29,16 @@
             >Done</ClassicButton
           >
 
-          <ClassicButton :color="'#f48225'" @click="startAudio()"
+          <!-- <ClassicButton :color="'#f48225'" @click="startAudio()"
             >Start Audio</ClassicButton
-          >
+          > -->
         </div>
+      </div>
+      <div
+        class="sticky button-action mx-auto"
+        style="z-index: 1200; width: 70%"
+      >
+        <ActionPan></ActionPan>
       </div>
     </Board>
     <div class="flex-1">
@@ -64,6 +70,7 @@ import Dice from "@/components/dice/dice.vue";
 import PiecePath from "@/components/path/piecePath.vue";
 import PlayerCard from "@/components/PlayerCard.vue";
 import SettingsPan from "@/components/SettingsPan.vue";
+import ActionPan from "@/components/ActionPan.vue";
 // import DiceRollButton from "@/components/DiceRollButton.vue";
 import ClassicButton from "@/components/ClassicButton.vue";
 import { Icon } from "@iconify/vue";
@@ -313,6 +320,7 @@ export default defineComponent({
     ClassicButton,
     Icon,
     SettingsPan,
+    ActionPan,
   },
 });
 </script>
@@ -332,5 +340,11 @@ export default defineComponent({
 .sticky-div {
   position: sticky;
   top: 0px;
+}
+.button-action {
+  bottom: 210px;
+}
+.button-action-dice {
+  bottom: 400px;
 }
 </style>

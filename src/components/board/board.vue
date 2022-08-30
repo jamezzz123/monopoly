@@ -1,17 +1,37 @@
 <template>
   <div>
-    <div class="table stop">
+    <div class="table stop transition-filter">
       <div class="frame">
-        <div class="corner tl" style="--order: 1" data-test="board-item">
+        <div
+          class="corner tl"
+          :class="[toggleGrayScale ? 'grayout' : '']"
+          style="--order: 1"
+          data-test="board-item"
+        >
           <div>free <span>🅿️</span> parking</div>
         </div>
-        <div class="corner tr" style="--order: 11" data-test="board-item">
+        <div
+          class="corner tr"
+          :class="[toggleGrayScale ? 'grayout' : '']"
+          style="--order: 11"
+          data-test="board-item"
+        >
           <div>go to <span>👮</span> jail</div>
         </div>
-        <div class="corner bl" style="--order: 31" data-test="board-item">
+        <div
+          class="corner bl"
+          :class="[toggleGrayScale ? 'grayout' : '']"
+          style="--order: 31"
+          data-test="board-item"
+        >
           <div>in <span>🗝</span> jail</div>
         </div>
-        <div class="corner br" style="--order: 41" data-test="board-item">
+        <div
+          class="corner br"
+          :class="[toggleGrayScale ? 'grayout' : '']"
+          style="--order: 41"
+          data-test="board-item"
+        >
           <div>
             <em
               >collect <br />
@@ -20,7 +40,11 @@
             go <span>↖️</span>
           </div>
         </div>
-        <div class="center" style="--order: 13">
+        <div
+          class="center"
+          :class="[toggleGrayScale ? 'grayout' : '']"
+          style="--order: 13"
+        >
           <div class="logo">monopoly</div>
           <div class="cards community">community chest</div>
           <div class="cards chance">chance</div>
@@ -29,7 +53,12 @@
           <div
             v-for="(item, index) in boardData"
             :key="index"
-            :class="[item.pos, item.color]"
+            :class="[
+              item.pos,
+              item.color,
+              toggleGrayScale ? 'grayout' : '',
+              includesInArray([14, 11, 3], item.id) ? 'no-grayout' : '',
+            ]"
             :style="['--order:' + item.order]"
             data-test="board-item"
           >
@@ -61,14 +90,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
 // import board_data from "./board-data.json";
 import { useBoard } from "@/store/board";
+import { useSettings } from "@/store/settings";
+
 import { board_property } from "@/types/board";
+import { includes } from "lodash";
 
 export default defineComponent({
   setup() {
     const board = useBoard();
+    const settings = useSettings();
 
     function getCurrentPiecePrice(boardProp: board_property) {
       if (boardProp.owner !== null) {
@@ -124,9 +157,20 @@ export default defineComponent({
         return false;
       }
     }
+
+    let toggleGrayScale = computed(() => {
+      return settings.gary_board;
+    });
+
+    function includesInArray(arrItem: number[], item: number) {
+      return includes(arrItem, item);
+    }
+
     return {
       boardData: board.board.List,
       getCurrentPiecePrice,
+      toggleGrayScale,
+      includesInArray,
     };
   },
 });
@@ -134,4 +178,18 @@ export default defineComponent({
 
 <style scoped lang="scss">
 @import "./board.scss";
+
+.grayout {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  filter: grayscale(100%);
+  transition: all 1s ease;
+}
+
+.no-grayout {
+  -webkit-filter: grayscale(0%);
+  -moz-filter: grayscale(0%);
+  filter: grayscale(0%);
+  transition: all 1s ease;
+}
 </style>
