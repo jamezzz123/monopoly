@@ -41,7 +41,7 @@
           </div>
         </div>
         <div
-          class="center"
+          class="center relative"
           :class="[toggleGrayScale ? 'grayout' : '']"
           style="--order: 13"
         >
@@ -79,6 +79,15 @@
                 <h2>{{ item.label }}</h2>
                 <!-- <h4>{{ item.owner }} 233454</h4> -->
                 <span></span> <strong>{{ item.price }}</strong>
+              </div>
+              <div class="absolute" :class="[`build-slip-${item.pos}`]">
+                <div class="flex justify-around">
+                  <div class="bg-red-500 label-size"></div>
+                  <div class="bg-blue-500 label-size"></div>
+                  <div class="bg-green-500 label-size"></div>
+                  <div class="bg-orange-500 label-size"></div>
+                  <div class="bg-purple-500 label-size"></div>
+                </div>
               </div>
             </template>
           </div>
@@ -191,5 +200,36 @@ export default defineComponent({
   -moz-filter: grayscale(0%);
   filter: grayscale(0%);
   transition: all 1s ease;
+}
+.build-slip-left {
+  transform: rotate(90deg);
+  right: -40px;
+  width: 40%;
+  z-index: 1000;
+  top: 30%;
+}
+.build-slip-right {
+  transform: rotate(-90deg);
+  left: -40px;
+  width: 40%;
+  z-index: 1000;
+  top: 30%;
+}
+
+.build-slip-bottom {
+  width: 50%;
+  z-index: 1000;
+  top: -24%;
+  left: 21px;
+}
+.build-slip-top {
+  width: 50%;
+  z-index: 1000;
+  bottom: -24%;
+  left: 21px;
+}
+.label-size {
+  width: 13px;
+  height: 25px;
 }
 </style>
