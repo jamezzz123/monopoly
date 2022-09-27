@@ -12,6 +12,27 @@ export const useBoard = defineStore("board", {
       board: board_data as board,
     };
   },
+  actions: {
+    addHouseCount(boardId: number) {
+      const index = this.board.List.findIndex(
+        (item) => item.board_position === boardId
+      );
+      if (index > -1) {
+        const currentHouseCount = this.board.List[index].house_count;
+        console.log(currentHouseCount + 1);
+        this.board.List[index].house_count = currentHouseCount + 1;
+      }
+    },
+    removeHouseCount(boardId: number) {
+      const index = this.board.List.findIndex(
+        (item) => item.board_position === boardId
+      );
+      if (index > -1) {
+        const currentHouseCount = this.board.List[index].house_count;
+        this.board.List[index].house_count = currentHouseCount - 1;
+      }
+    },
+  },
   getters: {
     getBoardProp: (state) => {
       return (boardId: number) =>

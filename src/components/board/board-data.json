@@ -201,7 +201,7 @@
       "hotel_cost": 1500,
       "hotel_count": 0,
       "property_group": [6,7,9],
-      "owner": null
+      "owner": {"id":"go","name":"Jack","dominateColor":"#3c3c3c"}
     },
     {
       "id": 10,
@@ -230,7 +230,7 @@
       "hotel_cost": 1500,
       "hotel_count": 0,
       "property_group": [10,11,13],
-      "owner": null
+      "owner": {"id":"go","name":"Jack","dominateColor":"#3c3c3c"}
     },
     {
       "id": 11,
@@ -258,7 +258,7 @@
       "hotel_cost": 1500,
       "hotel_count": 0,
       "property_group": [10,11,13],
-      "owner": null
+      "owner": {"id":"go","name":"Jack","dominateColor":"#3c3c3c"}
     },
     {
       "id": 12,
@@ -302,7 +302,7 @@
       "hotel_cost": 1500,
       "hotel_count": 0,
       "property_group": [10,11,13],
-      "owner": null
+      "owner":{"id":"go","name":"Jack","dominateColor":"#3c3c3c"}
     },
     {
       "id": 14,
@@ -317,7 +317,7 @@
       "property_color": "white",
       "property": false,
       "utility": true,
-      "owner": null,
+      "owner": {"id":"go","name":"Jack","dominateColor":"#3c3c3c"},
       "rent": 100
     },
     {

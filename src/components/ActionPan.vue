@@ -7,7 +7,7 @@
           class="mx-1 text-white"
           style="font-size: 50px"
         />
-        <span>BUILDD</span>
+        <span>BUILD</span>
       </div>
     </ClassicButton>
     <ClassicButton :color="'#069A8E'">
@@ -52,9 +52,11 @@ export default {
     ClassicButton,
     Icon,
   },
-  setup() {
+  emits: ["build-btn-clicked"],
+  setup(prop, { emit }) {
     let s = useSettings();
     function toggleSettings() {
+      emit("build-btn-clicked");
       return (s.gary_board = !s.gary_board);
     }
     return {

@@ -2,6 +2,7 @@
   <div class="flex">
     <Board class="relative inline-block">
       <PiecePath
+        v-show="!toggleGrayScale"
         :players="players"
         class="absolute"
         ref="piecePathComponent"
@@ -38,7 +39,7 @@
         class="sticky button-action mx-auto"
         style="z-index: 1200; width: 70%"
       >
-        <ActionPan></ActionPan>
+        <ActionPan @build-btn-clicked="buildModal.show()"></ActionPan>
       </div>
     </Board>
     <div class="flex-1">
@@ -57,6 +58,9 @@
 
     <transition name="modal">
       <PropertyModal ref="property" />
+    </transition>
+    <transition name="modal">
+      <BuildModal ref="buildModal" />
     </transition>
   </div>
 </template>
@@ -79,19 +83,24 @@ import useDiceRoll from "@/hooks/diceRoll";
 import { Player } from "@/types/player";
 import { board, board_property } from "@/types/board";
 import PropertyModal from "@/components/PropertyModal.vue";
+import BuildModal from "@/components/BuildModal.vue";
 import { getPlayerBoardPosition } from "@/utils/index";
 import { useBilling } from "@/hooks/billing";
 import { useProperty } from "@/hooks/property";
 import { prominent } from "color.js";
 import PlaySound from "@/assets/js/sound";
+import { useSettingsComposable } from "@/hooks/setting";
 
 export default defineComponent({
   setup() {
     let property = ref<null | { show: (agr: any) => null }>(null);
+    let buildModal = ref<null | { show: (agr: any) => null }>(null);
     let boardProp = useProperty();
     const billing = useBilling();
     const Players = usePlayerStore();
     const board = useBoard();
+    const settingFun = useSettingsComposable();
+
     let rolledDice = ref<boolean>(false);
 
     Players.addPlayer({
@@ -137,19 +146,6 @@ export default defineComponent({
         end: 0,
       },
     });
-
-    // setTimeout(() => {
-    //   Players.players.forEach((element) => {
-    //     // console.log(element);
-    //     let img = document.getElementById(element.image) as HTMLImageElement;
-    //     console.log(img);
-    //     if (img) {
-    //       let color = colorThief.getColor(img);
-    //       console.log(`rgb(${color.join(",")})`);
-    //       element.dominateColor = `rgb(${color.join(",")})`;
-    //     }
-    //   });
-    // }, 3000);
 
     let { rotateDice } = useDiceRoll();
     let { moveObject } = useMovement();
@@ -308,6 +304,8 @@ export default defineComponent({
       Done,
       rolledDice,
       startAudio,
+      buildModal,
+      toggleGrayScale: settingFun.toggleGrayScale,
     };
   },
   components: {
@@ -321,6 +319,8 @@ export default defineComponent({
     Icon,
     SettingsPan,
     ActionPan,
+
+    BuildModal,
   },
 });
 </script>

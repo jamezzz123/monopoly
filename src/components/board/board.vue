@@ -57,10 +57,13 @@
               item.pos,
               item.color,
               toggleGrayScale ? 'grayout' : '',
-              includesInArray([14, 11, 3], item.id) ? 'no-grayout' : '',
+              includesInArray([14, 11, 3, 19, 10, 16, 13], item.id)
+                ? 'no-grayout'
+                : '',
             ]"
             :style="['--order:' + item.order]"
             data-test="board-item"
+            @click="boardClicking(item)"
           >
             <template v-if="item.owner">
               <div class="inside">
@@ -73,21 +76,24 @@
                   <strong>{{ getCurrentPiecePrice(item) }}</strong>
                 </div>
               </div>
+              <template v-if="item.house_count > 0">
+                <div class="absolute" :class="[`build-slip-${item.pos}`]">
+                  <div class="flex justify-around">
+                    <div
+                      v-for="(num, index) in item.house_count"
+                      :key="index"
+                      :class="[houseLabel[num]]"
+                      class="label-size"
+                    ></div>
+                  </div>
+                </div>
+              </template>
             </template>
             <template v-else>
               <div class="inside">
                 <h2>{{ item.label }}</h2>
                 <!-- <h4>{{ item.owner }} 233454</h4> -->
                 <span></span> <strong>{{ item.price }}</strong>
-              </div>
-              <div class="absolute" :class="[`build-slip-${item.pos}`]">
-                <div class="flex justify-around">
-                  <div class="bg-red-500 label-size"></div>
-                  <div class="bg-blue-500 label-size"></div>
-                  <div class="bg-green-500 label-size"></div>
-                  <div class="bg-orange-500 label-size"></div>
-                  <div class="bg-purple-500 label-size"></div>
-                </div>
               </div>
             </template>
           </div>
@@ -99,7 +105,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, reactive } from "vue";
 // import board_data from "./board-data.json";
 import { useBoard } from "@/store/board";
 import { useSettings } from "@/store/settings";
@@ -111,6 +117,14 @@ export default defineComponent({
   setup() {
     const board = useBoard();
     const settings = useSettings();
+    let houseLabel = reactive([
+      "-",
+      "bg-green-500",
+      "bg-orange-500",
+      "bg-blue-500",
+      "bg-purple-500",
+      "bg-red-500",
+    ]);
 
     function getCurrentPiecePrice(boardProp: board_property) {
       if (boardProp.owner !== null) {
@@ -175,11 +189,22 @@ export default defineComponent({
       return includes(arrItem, item);
     }
 
+    function boardClicking(item: board_property) {
+      // debugger;
+      if (item.house_count < 4) {
+        board.addHouseCount(item.board_position);
+        if (!settings.gary_board) return;
+        settings.selectedItem.push(item);
+      }
+    }
+
     return {
       boardData: board.board.List,
       getCurrentPiecePrice,
       toggleGrayScale,
       includesInArray,
+      houseLabel,
+      boardClicking,
     };
   },
 });
