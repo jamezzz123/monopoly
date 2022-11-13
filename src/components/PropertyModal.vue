@@ -1,5 +1,6 @@
 <template>
   <div
+    data-test="property-modal"
     v-show="state.showModal"
     class="flex flex-col overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0 bg-opacity-50 bg-gray-500"
     style="z-index: 1200"
