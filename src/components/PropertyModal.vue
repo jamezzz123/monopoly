@@ -57,12 +57,14 @@
           <hr class="border-1 border-black" />
           <div class="flex justify-between my-2">
             <button
+              :class="[!showBtn ? 'w-full' : '']"
               ref="cancel"
               class="px-5 py-2 bg-rose-600 roboto-font rounded text-white drop-shadow-md font-medium tracking-wider hover:bg-red-700 hover:drop-shadow-lg"
             >
               Cancel
             </button>
             <button
+              v-show="showBtn"
               data-test="ok-modal-button"
               ref="ok"
               class="px-5 py-2 bg-green-600 roboto-font text-white rounded drop-shadow-md font-medium tracking-wider hover:bg-green-700 hover:drop-shadow-lg"
@@ -92,6 +94,7 @@ export default {
       property: {
         label: "The label",
       },
+      showBtn: true,
     });
     const rentData = [
       {
@@ -122,9 +125,11 @@ export default {
       },
     ];
 
-    async function show(property) {
-      state.showModal = true;
+    async function show(property, showActionBtn = true) {
+      debugger;
       state.property = property;
+      state.showBtn = showActionBtn;
+      state.showModal = true;
 
       return new Promise((resolve, reject) => {
         ok.value.addEventListener("click", () => {

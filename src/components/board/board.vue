@@ -63,7 +63,9 @@
             ]"
             :style="['--order:' + item.order]"
             data-test="board-item"
-            @click="boardClicking(item)"
+            @click="
+              toggleGrayScale ? boardClicking(item) : showBoardDetail(item)
+            "
           >
             <template v-if="item.owner">
               <div class="inside">
@@ -114,7 +116,8 @@ import { board_property } from "@/types/board";
 import { includes } from "lodash";
 
 export default defineComponent({
-  setup() {
+  emits: ["showPropertyDetails"],
+  setup(_props, ctx) {
     const board = useBoard();
     const settings = useSettings();
     let houseLabel = reactive([
@@ -198,6 +201,10 @@ export default defineComponent({
       }
     }
 
+    function showBoardDetail(item: board_property) {
+      ctx.emit("showPropertyDetails", item);
+    }
+
     return {
       boardData: board.board.List,
       getCurrentPiecePrice,
@@ -205,6 +212,7 @@ export default defineComponent({
       includesInArray,
       houseLabel,
       boardClicking,
+      showBoardDetail,
     };
   },
 });

@@ -1,6 +1,9 @@
 <template>
   <div class="flex">
-    <Board class="relative inline-block">
+    <Board
+      class="relative inline-block"
+      @showPropertyDetails="showPropDetails($event)"
+    >
       <PiecePath
         v-show="!toggleGrayScale"
         :players="players"
@@ -93,7 +96,7 @@ import { useSettingsComposable } from "@/hooks/setting";
 
 export default defineComponent({
   setup() {
-    let property = ref<null | { show: (agr: any) => null }>(null);
+    let property = ref<null | { show: (agr: any, agr1?: any) => null }>(null);
     let buildModal = ref<null | { show: (agr: any) => null }>(null);
     let boardProp = useProperty();
     const billing = useBilling();
@@ -240,6 +243,11 @@ export default defineComponent({
         }
       }
     }
+
+    function showPropDetails(propertyDetails: board_property) {
+      debugger;
+      property.value?.show(propertyDetails, false);
+    }
     function startAudio() {
       console.log(PlaySound.aot.playing());
       if (PlaySound.aot.playing()) {
@@ -306,6 +314,7 @@ export default defineComponent({
       startAudio,
       buildModal,
       toggleGrayScale: settingFun.toggleGrayScale,
+      showPropDetails,
     };
   },
   components: {
