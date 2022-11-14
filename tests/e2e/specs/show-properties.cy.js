@@ -1,4 +1,5 @@
 // https://docs.cypress.io/api/introduction/api.html
+import { random } from "lodash";
 
 describe("Test show property feature", () => {
   //   it("Visits the app root url", () => {
@@ -11,7 +12,7 @@ describe("Test show property feature", () => {
     cy.get('[data-test="board-item"]').should("have.length", 40);
     cy.get('[data-test="board-item"]').then(($li) => {
       const items = $li.toArray();
-      items[10].click();
+      items[random(5, 40)].click();
     });
     cy.get('[data-test="property-modal"]').and("be.visible");
   });
@@ -22,8 +23,11 @@ describe("Test show property feature", () => {
     cy.get('[data-test="board-item"]').should("have.length", 40);
     cy.get('[data-test="board-item"]').then(($li) => {
       const items = $li.toArray();
-      items[10].click();
+      items[random(5, 40)].click();
     });
+    cy.get('[data-test="property-modal"]').and("be.visible");
     cy.get('[data-test="ok-modal-button"]').and("be.not.visible");
+    cy.get('[data-test="cancel-modal-button"]').click();
+    cy.get('[data-test="property-modal"]').and("be.not.visible");
   });
 });

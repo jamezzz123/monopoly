@@ -59,6 +59,7 @@
           <div class="flex justify-between my-2">
             <button
               :class="[!showBtn ? 'w-full' : '']"
+              data-test="cancel-modal-button"
               ref="cancel"
               class="px-5 py-2 bg-rose-600 roboto-font rounded text-white drop-shadow-md font-medium tracking-wider hover:bg-red-700 hover:drop-shadow-lg"
             >
