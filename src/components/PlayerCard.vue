@@ -1,10 +1,10 @@
 <template>
   <div
-    class="bg-white border-4 flex font-extralight rounded-md shadow my-2"
+    class="bg-white border-4 flex font-extralight rounded-md shadow my-2 hover:border-green-500"
     :class="[active ? 'border-green-300' : 'border-white']"
   >
     <img class="px-1" style="width: 50px" :src="image" alt="" />
-    <div class="flex flex-col font-normal w-full relative">
+    <div class="flex flex-col font-normal w-full relative capitalize">
       <h6>Name: {{ name }}</h6>
       <h6 class="font-medium roboto-font">
         Amount:
@@ -28,6 +28,10 @@ import anime from "animejs";
 import PlaySound from "@/assets/js/sound";
 export default {
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,

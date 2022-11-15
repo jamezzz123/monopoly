@@ -58,7 +58,7 @@
           <hr class="border-1 border-black" />
           <div class="flex justify-between my-2">
             <button
-              :class="[!showBtn ? 'w-full' : '']"
+              :class="[!state.showBtn ? 'w-full' : '']"
               data-test="cancel-modal-button"
               ref="cancel"
               class="px-5 py-2 bg-rose-600 roboto-font rounded text-white drop-shadow-md font-medium tracking-wider hover:bg-red-700 hover:drop-shadow-lg"
@@ -66,7 +66,7 @@
               Cancel
             </button>
             <button
-              v-show="showBtn"
+              v-show="state.showBtn"
               data-test="ok-modal-button"
               ref="ok"
               class="px-5 py-2 bg-green-600 roboto-font text-white rounded drop-shadow-md font-medium tracking-wider hover:bg-green-700 hover:drop-shadow-lg"

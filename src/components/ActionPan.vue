@@ -30,7 +30,7 @@
         <span>BANK</span>
       </div>
     </ClassicButton>
-    <ClassicButton :color="'#f48225'">
+    <ClassicButton :color="'#f48225'" @click="$emit('deal-btn-clicked')">
       <div class="flex items-center">
         <Icon
           icon="emojione:handshake-medium-light-skin-tone"

@@ -42,7 +42,10 @@
         class="sticky button-action mx-auto"
         style="z-index: 1200; width: 70%"
       >
-        <ActionPan @build-btn-clicked="buildModal.show()"></ActionPan>
+        <ActionPan
+          @deal-btn-clicked="deals.show()"
+          @build-btn-clicked="buildModal.show()"
+        ></ActionPan>
       </div>
     </Board>
     <div class="flex-1">
@@ -61,6 +64,9 @@
 
     <transition name="modal">
       <PropertyModal ref="property" />
+    </transition>
+    <transition name="modal">
+      <DealsModal ref="deals" />
     </transition>
     <transition name="modal">
       <BuildModal ref="buildModal" />
@@ -86,10 +92,12 @@ import useDiceRoll from "@/hooks/diceRoll";
 import { Player } from "@/types/player";
 import { board, board_property } from "@/types/board";
 import PropertyModal from "@/components/PropertyModal.vue";
+import DealsModal from "@/components/deals/SelectPlayerModal.vue";
 import BuildModal from "@/components/BuildModal.vue";
 import { getPlayerBoardPosition } from "@/utils/index";
 import { useBilling } from "@/hooks/billing";
 import { useProperty } from "@/hooks/property";
+import { useDeals } from "@/hooks/deals";
 import { prominent } from "color.js";
 import PlaySound from "@/assets/js/sound";
 import { useSettingsComposable } from "@/hooks/setting";
@@ -103,6 +111,7 @@ export default defineComponent({
     const Players = usePlayerStore();
     const board = useBoard();
     const settingFun = useSettingsComposable();
+    const deals = useDeals();
 
     let rolledDice = ref<boolean>(false);
 
@@ -315,6 +324,7 @@ export default defineComponent({
       buildModal,
       toggleGrayScale: settingFun.toggleGrayScale,
       showPropDetails,
+      deals,
     };
   },
   components: {
@@ -330,6 +340,7 @@ export default defineComponent({
     ActionPan,
 
     BuildModal,
+    DealsModal,
   },
 });
 </script>
